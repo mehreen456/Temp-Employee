@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FooterView" customModule="TempEmployee" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-d2-ORp">
+                    <rect key="frame" x="159" y="35" width="58" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="8cV-4y-x4G"/>
+                        <constraint firstAttribute="width" constant="58" id="IHI-LB-R3w"/>
+                    </constraints>
+                    <state key="normal" image="Finger Print Icon"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW SHIFTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTU-OL-qe0">
+                    <rect key="frame" x="152.5" y="20.5" width="71" height="14.5"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                    <color key="textColor" red="1" green="0.50980392159999999" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GKk-d2-ORp" firstAttribute="top" secondItem="iTU-OL-qe0" secondAttribute="bottom" id="0Jh-3o-JUy"/>
+                <constraint firstAttribute="bottom" secondItem="GKk-d2-ORp" secondAttribute="bottom" constant="7" id="P3Z-L7-uHJ"/>
+                <constraint firstItem="iTU-OL-qe0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aZT-C2-XWf"/>
+                <constraint firstItem="GKk-d2-ORp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rbT-WM-0LJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="21.5" y="207"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Finger Print Icon" width="76" height="76"/>
+    </resources>
+</document>

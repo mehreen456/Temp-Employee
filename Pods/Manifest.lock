@@ -1,0 +1,77 @@
+PODS:
+  - AFDateHelper (4.1.2)
+  - Alamofire (4.4.0)
+  - AWSCore (2.5.6)
+  - AWSS3 (2.5.6):
+    - AWSCore (= 2.5.6)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - BWWalkthrough (2.1.0)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.22.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.22.1):
+    - FBSDKCoreKit
+  - IQKeyboardManagerSwift (4.0.9)
+  - LLSimpleCamera (4.2.0)
+  - PKHUD (4.2.2)
+  - SwiftValidator (4.0.0)
+  - SwiftyJSON (3.1.4)
+  - SwiftyUserDefaults (3.0.0)
+
+DEPENDENCIES:
+  - AFDateHelper
+  - Alamofire
+  - AWSS3
+  - BWWalkthrough
+  - FacebookCore
+  - FacebookLogin
+  - IQKeyboardManagerSwift
+  - LLSimpleCamera (~> 4.1)
+  - PKHUD (~> 4.0)
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
+  - SwiftyJSON (~> 3.1)
+  - SwiftyUserDefaults
+
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :branch: master
+    :git: https://github.com/jpotts18/SwiftValidator.git
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :commit: 2a6c23ad9efd76127f6109445515cb9780e5ad92
+    :git: https://github.com/jpotts18/SwiftValidator.git
+
+SPEC CHECKSUMS:
+  AFDateHelper: b19c83daa132e398b34fbea085a1554ce07adfe9
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  AWSCore: 47109d026cdbc1272624caa73114fbdd2ba3ad66
+  AWSS3: 5ba117abcbf766c4ec405b255c51dbf8bbc588ce
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  BWWalkthrough: 188408f55b951725ccfd4faa8dab5c577b57c7a9
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: 9c2daf0162214d6d2e21cf8208a9c6c2a2e42b9c
+  FBSDKLoginKit: 00cf28916b9f0169763a3d61985d745b579fe304
+  IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
+  LLSimpleCamera: ed7813ce4827ff3e34c6af159c99b5b56e54d1c6
+  PKHUD: 9a3599e04d57676ec14746c40e423a52fb6588c0
+  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
+
+PODFILE CHECKSUM: 26fe3b6b66fcde43743b98ec0bc4a4b9a3bdfc01
+
+COCOAPODS: 1.2.0
