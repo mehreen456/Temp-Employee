@@ -8,9 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import FacebookCore
 import SwiftyUserDefaults
-import AWSCore
+import DropDown
 
 
 @UIApplicationMain
@@ -21,25 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         IQKeyboardManager.sharedManager().enable = true
-        AWSDDLog.sharedInstance.logLevel = .verbose
-        
-        //        let storyboard = UIStoryboard.storyboard(.registration)
-        //
-        //        let rootController : ProfilePicViewController  = storyboard.instantiateViewController()
-        //
-        //
-        //        self.setRootController(root: rootController)
-        
-        
-        
-        let credentialProvider = AWSStaticCredentialsProvider(accessKey:Constants.S3Credentials.accessKey , secretKey:Constants.S3Credentials.secretkey )
-        let configuration = AWSServiceConfiguration(region: .USWest2, credentialsProvider: credentialProvider)
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
-        
+
         setRootViewController()
-        
+        DropDown.startListeningToKeyboard()
         return true
     }
     
@@ -65,9 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    public func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return SDKApplicationDelegate.shared.application(application, open:url, sourceApplication:sourceApplication, annotation:annotation)
-    }
+//    public func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        return SDKApplicationDelegate.shared.application(application, open:url, sourceApplication:sourceApplication, annotation:annotation)
+//    }
     
     func setRootViewController(){
         
@@ -81,8 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // instantiate your desired ViewController
             let rootController : MainViewController  = storyboard.instantiateViewController(withIdentifier: "ShowCaseController") as! MainViewController
-            
-            self.setRootController(root: rootController)
+            let nav = UINavigationController.init()
+            nav.setViewControllers([rootController], animated: true)
+             self.window?.rootViewController = nav
             
             
         }

@@ -8,26 +8,30 @@
 
 import Foundation
 import Alamofire
+import SwiftyUserDefaults
 
 enum TemProvideRouter: URLRequestConvertible {
     
     
-  static let baseURLString = "https://devapi.temprovide.com/v1/employers/"
+  static let baseURLString = "https://devapi.temprovide.com/v1/"
   //static let authenticationToken = "Basic xxx"
     
-  case get(Int)
+  case get
+  case getSIALicence
   case login(String,String)
   case postLicenceInfo([[String:String]])
   case postProfilePic(String)
   case postPaymentDetails(String,String,String)
   case postSlotId(Int,Int)
+    
+    
   func asURLRequest() throws -> URLRequest {
    
     // create a variable of type HTTPMethod to set Api call type
     
     var method: HTTPMethod {
       switch self {
-      case .get:
+      case .get,.getSIALicence:
         return .get
       case .login,.postLicenceInfo,.postProfilePic,.postPaymentDetails,.postSlotId:
         return .post
@@ -39,6 +43,8 @@ enum TemProvideRouter: URLRequestConvertible {
     let params: ([String: Any]?) = {
       switch self {
       case .get:
+        return nil
+      case .getSIALicence:
         return nil
       case .login(let email, let password):
         return (Params.paramsForLogin(email: email, password: password))
@@ -56,8 +62,10 @@ enum TemProvideRouter: URLRequestConvertible {
       // build up and return the URL for each endpoint
       let relativePath: String?
       switch self {
-      case .get(let number):
-        relativePath = Constants.EndPoints.createJobseekerURL(userID: number, endpoint: Constants.EndPoints.Get.slots)
+      case .get:
+        relativePath = Constants.EndPoints.Get.shifts
+      case .getSIALicence:
+        relativePath = Constants.EndPoints.Get.licences
       case .login:
         relativePath = Constants.EndPoints.Post.Login
       case .postLicenceInfo:
@@ -67,10 +75,11 @@ enum TemProvideRouter: URLRequestConvertible {
       case .postPaymentDetails:
         relativePath = Constants.EndPoints.Post.PaymentDetails
       case .postSlotId(let jobseekerID , _):
-        relativePath = Constants.EndPoints.createJobseekerURL(userID:jobseekerID, endpoint: Constants.EndPoints.Get.slots)
+        print("\(jobseekerID)")
+        relativePath = ""
       }
         
-      var url = URL(string: TemProvideRouter.baseURLString)!
+        var url = URL(string: TemProvideRouter.baseURLString)!
       if let relativePath = relativePath {
         url = url.appendingPathComponent(relativePath)
       }
@@ -80,9 +89,20 @@ enum TemProvideRouter: URLRequestConvertible {
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = method.rawValue
     urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    //urlRequest.timeoutInterval = TimeInterval(10 * 1000)
+    if Defaults[.hasUserRegistered]{
+        urlRequest.setValue("Bearer \(Defaults[.accessToken]!)", forHTTPHeaderField: "Authorization")
+    }
+    var encoding : ParameterEncoding
     
-    let encoding = JSONEncoding.default
+    encoding = JSONEncoding.default
+    
+//    switch self {
+//    case .get:
+//        encoding = URLEncoding.default
+//    default:
+//         encoding = JSONEncoding.default
+//    }
+    
     return try encoding.encode(urlRequest, with: params)
   }
 }

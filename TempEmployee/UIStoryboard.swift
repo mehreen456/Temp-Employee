@@ -29,7 +29,7 @@ extension UIStoryboard {
     enum Storyboard: String {
         case main
         case showCase
-        case registration
+        case addShift
         
         var filename: String {
             return rawValue.capitalized

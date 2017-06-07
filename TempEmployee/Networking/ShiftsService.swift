@@ -10,46 +10,76 @@ import Foundation
 import SwiftyJSON
 import SwiftyUserDefaults
 
-struct Shift {
-    var id: NSNumber //"id":1,
-    var slot_name: String //"slot_name":"Slot 1",
-    var interview_date: String //"interview_date":"25-05-2017",
-    var interview_time: String //"interview_time":"10:00 AM",
-    var location_name: String //"location_name" : "Manchester",
-    var address: String //"address" : "The Old Nags Pub, 19-20 Jacksons Row, Deansgate, Manchester M2 5WD",
-    var post_code: String //"post_code" : "M2 5WD",
-    var region: String //"region" : "GB-MAN",
+struct Licence{
+    
+     var id: NSNumber
+     var license_name : String
+    
+
 }
-class Shifts{
+struct Shift  {
+    
+    var role: String?
+    var from_time: String?
+    var interview_time: String?
+    var shift_hours: String?
+    var address: String?
+    var price_per_hour: String?
+    var shift_date: String?
+    
+     var reporting_to: String?
+     var phone: String?
+     var details: String?
+     var special_info: String?
+     var site_instructions: String?
+     var required_licenses: [Licence]
+        
+}
+class Shifts : Meta{
     
     var shifts = [Shift]()
-     init(jsonDict: JSONDict) {
+     override init(jsonDict: JSONDict) {
         
-       
+        super.init(jsonDict: jsonDict)
+        
+        if self.success{
+            let shiftsArray = jsonDict["data"] as? [[String:Any]]
             
-            let slotsArray = jsonDict["data"] as? [[String:Any]]
-            
-            if ((slotsArray?.count)! > 0) {
+            if ((shiftsArray?.count)! > 0) {
                 
-                for item in  slotsArray!{
+                for shift in  shiftsArray!{
                     
+                    let requiredLicenceArray = shift["required_licenses"] as? [[String:Any]]
                     
-                    let slotObj = Shift(id:item["id"] as! NSNumber , slot_name: item["slot_name"] as! String, interview_date: item["interview_date"] as! String, interview_time: item["interview_time"] as! String, location_name: item["location_name"] as! String, address: item["address"] as! String, post_code: item["post_code"] as! String, region: item["region"] as! String)
+                    var licenceArray = [Licence]()
+                    if requiredLicenceArray != nil {
+                   
+                        for licence in requiredLicenceArray!{
+                       
+                            let licenceObject = Licence(id: licence["id"] as! NSNumber, license_name: licence["license_name"] as! String)
+                        
+                        licenceArray.append(licenceObject)
+                   
+                        }
+                    }
+                    let ShiftObject = Shift(role: shift["role"] as? String, from_time: shift["from_time"] as? String, interview_time: shift["interview_time"] as? String, shift_hours: shift["shift_hours"] as? String, address: shift["address"] as? String, price_per_hour: shift["price_per_hour"] as? String, shift_date: shift["shift_date"] as? String, reporting_to: shift["reporting_to"] as? String, phone: shift["phone"] as? String, details: shift["details"] as? String, special_info: shift["special_info"] as? String, site_instructions: shift["site_instructions"] as? String, required_licenses:  licenceArray)
                     
-                    shifts.append(slotObj)
+                    shifts.append(ShiftObject)
                 }
                 
             }
         
+    
+        }
     }
 }
 
 struct ShiftsService {
     
 
-    func fetchInterviewSlots(for user_id:Int ,completionHandler: @escaping (Result<Shifts> ) -> Void) {
+    func fetchMyShifts(with completionHandler: @escaping (Result<Shifts> ) -> Void) {
         
-        NetworkManager.callServer(with_request: TemProvideRouter.get(user_id), completionHandler: {result in
+        NetworkManager.callServer(with_request: TemProvideRouter.get, completionHandler: {result in
             
             switch result {
                 

@@ -10,16 +10,12 @@ target 'TempEmployee' do
   pod "BWWalkthrough"
   pod "IQKeyboardManagerSwift"
   pod "Alamofire"
-  pod "FacebookCore"
-  pod "FacebookLogin"
-  pod "LLSimpleCamera", "~> 4.1"
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'SwiftyJSON', '~> 3.1'
   pod 'PKHUD', '~> 4.0'
   pod 'SwiftyUserDefaults'
   pod 'AFDateHelper'
-
-  pod 'AWSS3'
+  pod 'DropDown'
   target 'TempEmployeeTests' do
     inherit! :search_paths
     # Pods for testing

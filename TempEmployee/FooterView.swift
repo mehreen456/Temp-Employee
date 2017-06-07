@@ -17,5 +17,11 @@ class FooterView: UIView {
         // Drawing code
     }
     */
-
+    
+    @IBOutlet open var newShiftButton: UIButton!
+    @IBAction func confirmPressed(_ sender: UIButton) {
+        
+        print(sender)
+    }
+    
 }

@@ -29,7 +29,7 @@
                     <state key="normal" image="Finger Print Icon"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW SHIFTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTU-OL-qe0">
-                    <rect key="frame" x="152.5" y="20.5" width="71" height="14.5"/>
+                    <rect key="frame" x="152.5" y="21" width="71" height="14"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                     <color key="textColor" red="1" green="0.50980392159999999" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -43,6 +43,9 @@
                 <constraint firstItem="GKk-d2-ORp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rbT-WM-0LJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="newShiftButton" destination="GKk-d2-ORp" id="0pG-ug-fWj"/>
+            </connections>
             <point key="canvasLocation" x="21.5" y="207"/>
         </view>
     </objects>

@@ -161,16 +161,17 @@ extension MainViewController{
     
     func moveToNextRegistrationStep()  {
         
-        let storyboard = UIStoryboard.storyboard(.main)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let tabVC : TabViewController = storyboard.instantiateViewController()
+        // instantiate your desired ViewController
+        let rootController : UITabBarController  = storyboard.instantiateViewController(withIdentifier: "TabViewController") as! UITabBarController
         
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.dismiss(animated: true, completion: nil)
         
-        appDelegate.navigationController?.setViewControllers([tabVC], animated: true)
-        appDelegate.navigationController?.pushViewController(tabVC, animated: true)
+        appDelegate.window?.rootViewController = rootController
+        self.present(rootController, animated: false, completion: nil)
         
         
     }

@@ -20,16 +20,17 @@ struct Constants {
     
     struct EndPoints {
         struct Post {
-            static let Login : String                   = "login"
-            static let LicenceDetails : String          = "licenseDetails"
-            static let ProfilePic : String              = "uploadImage"
-            static let PaymentDetails : String          = "paymentDetails"
+            static let Login : String                   = "employers/login"
+            static let LicenceDetails : String          = "employers/licenseDetails"
+            static let ProfilePic : String              = "employers/uploadImage"
+            static let PaymentDetails : String          = "employers/paymentDetails"
         }
         
         
         struct Get {
             
-            static let slots : String                   = "slots"
+            static let shifts : String                      = "employers/shifts"
+            static let licences : String                    = "licenseTypes"
         }
         /**
          Repeats a string `times` times.
@@ -48,7 +49,7 @@ struct Constants {
     }
     
     struct Employer {
-        static let accessToken : String                             = "accessToken"
+        static let accessToken : String                             = "access_token"
         static let accessTokenExpireIn : String                     = "accessTokenExpireIn"
         static let licencePosted : String                           = "licencePosted"
         
@@ -79,4 +80,9 @@ struct Constants {
         
     }
     
+    struct Shift {
+        static let defaultPrice : Int                        = 8
+        static let defaultHours : Int                        = 8
+        static let time : [String]                           = ["1AM","2AM","3AM","4AM","5AM","6AM","7AM","8AM","9AM","10AM","11AM","12AM","1PM","2PM","3PM","4PM","5PM","6PM","7PM","8PM","9PM","10PM","11PM","12PM"]
+    }
 }

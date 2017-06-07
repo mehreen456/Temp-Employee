@@ -8,11 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		42A4CAE20C415842B34000A4 /* Pods_TempEmployeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A105EABEDE02DD73324536 /* Pods_TempEmployeeTests.framework */; };
+		475DFF5E1EE5B1E4001B8229 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475DFF5D1EE5B1E4001B8229 /* DateRange.swift */; };
+		475FDA7F1EE2D5B300BC117C /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA7E1EE2D5B300BC117C /* HeaderView.xib */; };
+		475FDA811EE2DB5E00BC117C /* AddShift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA801EE2DB5E00BC117C /* AddShift.storyboard */; };
+		475FDA821EE2DB5E00BC117C /* AddShift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA801EE2DB5E00BC117C /* AddShift.storyboard */; };
+		475FDA831EE2DB5E00BC117C /* AddShift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA801EE2DB5E00BC117C /* AddShift.storyboard */; };
 		47748CE51EE03B5900BEEB90 /* ShiftsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47748CE41EE03B5900BEEB90 /* ShiftsService.swift */; };
+		4775CE921EE49CD90089B59C /* AddShiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4775CE911EE49CD90089B59C /* AddShiftCell.swift */; };
 		4777261B1EDECBD400ACFBCD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777261A1EDECBD400ACFBCD /* NetworkManager.swift */; };
 		4777261E1EDECBE100ACFBCD /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777261C1EDECBE100ACFBCD /* Params.swift */; };
 		4777261F1EDECBE100ACFBCD /* TemProvideRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777261D1EDECBE100ACFBCD /* TemProvideRouter.swift */; };
 		477726211EDECBF800ACFBCD /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477726201EDECBF800ACFBCD /* LoginService.swift */; };
+		477980EE1EE6D80300855AED /* LicenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477980ED1EE6D80300855AED /* LicenceService.swift */; };
+		477980F01EE6EA3500855AED /* tagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 477980EF1EE6EA3500855AED /* tagView.xib */; };
+		477980F21EE6FF4100855AED /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477980F11EE6FF4100855AED /* StringExtension.swift */; };
 		4786196D1EDF3E6B00870F12 /* ShiftsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786196B1EDF3E6B00870F12 /* ShiftsCell.swift */; };
 		4786196E1EDF3E6B00870F12 /* ShiftsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4786196C1EDF3E6B00870F12 /* ShiftsCell.xib */; };
 		478619711EDF482B00870F12 /* ShiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478619701EDF482B00870F12 /* ShiftsViewController.swift */; };
@@ -72,6 +81,7 @@
 		4791C97C1EDCAA7C0028972A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4791C9781EDCAA7C0028972A /* MainViewController.swift */; };
 		4791C97D1EDCAA7C0028972A /* MyCustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4791C9791EDCAA7C0028972A /* MyCustomPageViewController.swift */; };
 		4791C97E1EDCAA7C0028972A /* ShowCase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4791C97A1EDCAA7C0028972A /* ShowCase.storyboard */; };
+		479C5ECF1EE4874500090094 /* AddShiftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479C5ECE1EE4874500090094 /* AddShiftController.swift */; };
 		4ABB002D6F71353B85BBC8F0 /* Pods_TempEmployeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CE939B627C344DC7D251F2 /* Pods_TempEmployeeUITests.framework */; };
 		BE914D4EA7CF42A1C3818658 /* Pods_TempEmployee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7488B4ADAFCC7D72E69AF095 /* Pods_TempEmployee.framework */; };
 /* End PBXBuildFile section */
@@ -96,11 +106,18 @@
 /* Begin PBXFileReference section */
 		0E9CA7399729C01E603137DA /* Pods-TempEmployeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempEmployeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TempEmployeeUITests/Pods-TempEmployeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		464A6F47A0A69193ED11BC27 /* Pods-TempEmployeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempEmployeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TempEmployeeTests/Pods-TempEmployeeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		475DFF5D1EE5B1E4001B8229 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
+		475FDA7E1EE2D5B300BC117C /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		475FDA801EE2DB5E00BC117C /* AddShift.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddShift.storyboard; sourceTree = "<group>"; };
 		47748CE41EE03B5900BEEB90 /* ShiftsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftsService.swift; sourceTree = "<group>"; };
+		4775CE911EE49CD90089B59C /* AddShiftCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShiftCell.swift; sourceTree = "<group>"; };
 		4777261A1EDECBD400ACFBCD /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4777261C1EDECBE100ACFBCD /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
 		4777261D1EDECBE100ACFBCD /* TemProvideRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemProvideRouter.swift; sourceTree = "<group>"; };
 		477726201EDECBF800ACFBCD /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		477980ED1EE6D80300855AED /* LicenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenceService.swift; sourceTree = "<group>"; };
+		477980EF1EE6EA3500855AED /* tagView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tagView.xib; sourceTree = "<group>"; };
+		477980F11EE6FF4100855AED /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4786196B1EDF3E6B00870F12 /* ShiftsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShiftsCell.swift; path = TableViewCells/ShiftsCell.swift; sourceTree = "<group>"; };
 		4786196C1EDF3E6B00870F12 /* ShiftsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShiftsCell.xib; path = TableViewCells/ShiftsCell.xib; sourceTree = "<group>"; };
 		478619701EDF482B00870F12 /* ShiftsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftsViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +184,7 @@
 		4791C9781EDCAA7C0028972A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4791C9791EDCAA7C0028972A /* MyCustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomPageViewController.swift; sourceTree = "<group>"; };
 		4791C97A1EDCAA7C0028972A /* ShowCase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowCase.storyboard; sourceTree = "<group>"; };
+		479C5ECE1EE4874500090094 /* AddShiftController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShiftController.swift; sourceTree = "<group>"; };
 		48451DB79C1071DE42388965 /* Pods-TempEmployee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempEmployee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TempEmployee/Pods-TempEmployee.debug.xcconfig"; sourceTree = "<group>"; };
 		63A105EABEDE02DD73324536 /* Pods_TempEmployeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TempEmployeeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4C95FD3CC598C20D232FF1 /* Pods-TempEmployeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempEmployeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TempEmployeeTests/Pods-TempEmployeeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +230,7 @@
 				4777261D1EDECBE100ACFBCD /* TemProvideRouter.swift */,
 				4777261A1EDECBD400ACFBCD /* NetworkManager.swift */,
 				47748CE41EE03B5900BEEB90 /* ShiftsService.swift */,
+				477980ED1EE6D80300855AED /* LicenceService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -219,6 +238,7 @@
 		477726221EDEE03400ACFBCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				479C5ECD1EE4871D00090094 /* Add Shift */,
 				4786196F1EDF480800870F12 /* Tabs */,
 				4791C9771EDCAA6A0028972A /* Showcase */,
 			);
@@ -230,6 +250,7 @@
 			children = (
 				4786196B1EDF3E6B00870F12 /* ShiftsCell.swift */,
 				4786196C1EDF3E6B00870F12 /* ShiftsCell.xib */,
+				4775CE911EE49CD90089B59C /* AddShiftCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -247,6 +268,8 @@
 			children = (
 				4791B5CF1EE026EA00EDA1CF /* FooterView.swift */,
 				4791B5D11EE0270100EDA1CF /* FooterView.xib */,
+				475FDA7E1EE2D5B300BC117C /* HeaderView.xib */,
+				477980EF1EE6EA3500855AED /* tagView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -284,6 +307,7 @@
 				478EB9AC1EDD85C8003CC1C0 /* Extensions */,
 				47881CB91EDC5E6300FEC0EE /* AppDelegate.swift */,
 				47881CBB1EDC5E6300FEC0EE /* ViewController.swift */,
+				475FDA801EE2DB5E00BC117C /* AddShift.storyboard */,
 				47881CBD1EDC5E6300FEC0EE /* Main.storyboard */,
 				47881CC01EDC5E6300FEC0EE /* Assets.xcassets */,
 				47881CC21EDC5E6300FEC0EE /* LaunchScreen.storyboard */,
@@ -314,6 +338,7 @@
 		478EB9AC1EDD85C8003CC1C0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				475DFF5D1EE5B1E4001B8229 /* DateRange.swift */,
 				478EB99B1EDD85C3003CC1C0 /* UIStoryboard.swift */,
 				478EB99C1EDD85C3003CC1C0 /* UIView.swift */,
 				478EB99D1EDD85C3003CC1C0 /* Temp Provide-Bridging-Header.h */,
@@ -324,6 +349,7 @@
 				478EB9A21EDD85C3003CC1C0 /* PHPhotoLibrary.swift */,
 				478EB9A31EDD85C3003CC1C0 /* ColorExtension.swift */,
 				478EB9F61EDD9C3D003CC1C0 /* TextField.swift */,
+				477980F11EE6FF4100855AED /* StringExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +404,14 @@
 			);
 			name = Showcase;
 			path = ../Showcase;
+			sourceTree = "<group>";
+		};
+		479C5ECD1EE4871D00090094 /* Add Shift */ = {
+			isa = PBXGroup;
+			children = (
+				479C5ECE1EE4874500090094 /* AddShiftController.swift */,
+			);
+			path = "Add Shift";
 			sourceTree = "<group>";
 		};
 		93BF8931C0744F452B725785 /* Pods */ = {
@@ -521,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				478EB9F21EDD9189003CC1C0 /* Lato-Semibold.ttf in Resources */,
+				475FDA811EE2DB5E00BC117C /* AddShift.storyboard in Resources */,
 				478EB9F01EDD9189003CC1C0 /* Lato-MediumItalic.ttf in Resources */,
 				478EB9DB1EDD9189003CC1C0 /* HalisR-SBlack.otf in Resources */,
 				478EB9E01EDD9189003CC1C0 /* HalisR-SMedium.otf in Resources */,
@@ -552,6 +587,7 @@
 				47881CC11EDC5E6300FEC0EE /* Assets.xcassets in Resources */,
 				478EB9DA1EDD9189003CC1C0 /* HalisR-Regular.otf in Resources */,
 				478EB9DC1EDD9189003CC1C0 /* HalisR-SBold.otf in Resources */,
+				477980F01EE6EA3500855AED /* tagView.xib in Resources */,
 				478EB9E91EDD9189003CC1C0 /* Lato-HairlineItalic.ttf in Resources */,
 				4791B5D21EE0270100EDA1CF /* FooterView.xib in Resources */,
 				478EB9D91EDD9189003CC1C0 /* HalisR-Medium.otf in Resources */,
@@ -559,6 +595,7 @@
 				478EB9D51EDD9189003CC1C0 /* HalisR-Bold.otf in Resources */,
 				478EB9D41EDD9189003CC1C0 /* HalisR-Black.otf in Resources */,
 				4791C97E1EDCAA7C0028972A /* ShowCase.storyboard in Resources */,
+				475FDA7F1EE2D5B300BC117C /* HeaderView.xib in Resources */,
 				478EB9F11EDD9189003CC1C0 /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +604,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475FDA821EE2DB5E00BC117C /* AddShift.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +612,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475FDA831EE2DB5E00BC117C /* AddShift.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,10 +763,15 @@
 			files = (
 				478EB9A41EDD85C3003CC1C0 /* UIStoryboard.swift in Sources */,
 				478EB9A81EDD85C3003CC1C0 /* UIImage.swift in Sources */,
+				479C5ECF1EE4874500090094 /* AddShiftController.swift in Sources */,
 				4791C97D1EDCAA7C0028972A /* MyCustomPageViewController.swift in Sources */,
+				475DFF5E1EE5B1E4001B8229 /* DateRange.swift in Sources */,
+				477980F21EE6FF4100855AED /* StringExtension.swift in Sources */,
+				4775CE921EE49CD90089B59C /* AddShiftCell.swift in Sources */,
 				478EB9F71EDD9C3D003CC1C0 /* TextField.swift in Sources */,
 				478EB9A91EDD85C3003CC1C0 /* UserDefaults.swift in Sources */,
 				478EB9B01EDD8BAB003CC1C0 /* GlobalVariables.swift in Sources */,
+				477980EE1EE6D80300855AED /* LicenceService.swift in Sources */,
 				477726211EDECBF800ACFBCD /* LoginService.swift in Sources */,
 				478EB9A71EDD85C3003CC1C0 /* UIViewController.swift in Sources */,
 				478EB9A61EDD85C3003CC1C0 /* UnderLineTextField.swift in Sources */,
