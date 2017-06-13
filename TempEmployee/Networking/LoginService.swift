@@ -81,7 +81,7 @@ struct LoginService {
                 
             case .Success(let response):
                     print (response )
-                    let object = LoginData(jsonDict: response)
+                    let object = LoginData(jsonDict: response as JSONDict)
                     print("parsed data = ", object)
                 completionHandler(.Success(object))
                     /*let success = response["meta"]!["success"] as? Bool

@@ -16,12 +16,7 @@ import PKHUD
 
 class AddShiftController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var rollField: UITextField!
-    @IBOutlet weak var address: UITextView!
     
-
     var price : Int? {
         
         didSet{
@@ -31,11 +26,12 @@ class AddShiftController: UIViewController {
     }
     
     var hours : Int? {
-    
-    didSet{
-    
-        self.cell?.hoursField.text = "\(hours!) hr"
-    }
+        
+        didSet{
+            
+            self.cell?.hoursField.text = "\(hours!) hr"
+            
+        }
     }
     
     var licecnceField : UITextField!
@@ -43,22 +39,38 @@ class AddShiftController: UIViewController {
     var cell : AddShiftCell?
     var licences  =  [Licence]()
     var selectedLicences  =  [Licence]()
+    var shift : Shift?
+    var dataTask:URLSessionDataTask?
+    var selectedPointAnnotation:MKPointAnnotation?
+    var coordinate : CLLocationCoordinate2D?
+    var isEditingShift:  Bool! = false
     
     let dropDown = DropDown()
     let validator = Validator()
     let timeArray = Constants.Shift.time
+    // set initial location in London
+    let initialLocation = CLLocation(latitude: 51.50699, longitude: -0.13606)
+    let regionRadius: CLLocationDistance = 2000
+    
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var rollField: UITextField!
+    @IBOutlet weak var address: UITextView!
+    
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
         self.tableView.dataSource   = self
         self.tableView.delegate     = self
-        
-        
-        //self.tagView.delegate = self
-        //self.tagView.dataSource = self
+        self.mapView.delegate = self
         self.FetchAllSIALicences(service: LicenceService())
-        // Do any additional setup after loading the view.
+        
+        centerMapOnLocation(location: initialLocation)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,9 +84,15 @@ class AddShiftController: UIViewController {
         self.price = Constants.Shift.defaultPrice
         self.hours = Constants.Shift.defaultHours
     }
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
 
+    
 }
-extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,ValidationDelegate , UITextFieldDelegate,UIGestureRecognizerDelegate{
+extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,ValidationDelegate , UITextFieldDelegate,UIGestureRecognizerDelegate,MKMapViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -83,14 +101,55 @@ extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,Valida
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier:"AddShiftCell" , for: indexPath) as! AddShiftCell
        
+        
+        // save cell instance as tablview is only use to handle vertical scrolling 
+        // and there will always be a single cell
+        self.cell = cell
+        
+        
+        if self.shift != nil{
+            cell.jobRollField.text = self.shift?.role
+            cell.jobAddressField.text = self.shift?.address
+            cell.hoursField.text = self.shift?.shift_hours
+            cell.pricePerHourField.text = self.shift?.price_per_hour
+            cell.startTimeField.text = self.shift?.from_time
+            
+            if let dateStr = self.shift?.shift_date{
+                
+                // server sends date in yyyy-MM-dd format when fetched
+                // we need date in dd MMM yyyy
+                // covert date string to date coz it's in dd MMM yyyy format
+                
+                let d = Date(fromString:dateStr , format: DateFormatType.custom("yyyy-MM-dd"))
+                
+                cell.dateField.text = d?.toString(format:DateFormatType.custom("dd MMM yyyy"))
+                
+                // set it again becuse server takes date in "dd Mm yyyy format when updating or creating"
+                self.shift?.shift_date = cell.dateField.text
+            }
+            
+            
+            if self.shift?.lat != nil , self.shift?.lng != nil{
+                
+                self.coordinate = CLLocationCoordinate2DMake((self.shift?.lat!)!, (self.shift?.lng!)!)
+            }
+            for lic in (self.shift?.required_licenses)!{
+               // self.selectedLicences.append(lic)
+                self.addTagView(selectedLicenceObject: lic)
+            }
+            
+            self.fetchAutocompletePlaces(cell.jobAddressField.text!)
+            
+        }else{
        
-        cell.pricePerHourField.text = "£\(Constants.Shift.defaultPrice)"
-        cell.hoursField.text = "\(Constants.Shift.defaultHours) hr"
+            cell.pricePerHourField.text = "£\(Constants.Shift.defaultPrice)"
+            cell.hoursField.text = "\(Constants.Shift.defaultHours) hr"
+        }
         // Validation Rules are evaluated from left to right.
-        validator.registerField(cell.jobAddressTxtView as ValidatableField , errorLabel:cell.addressErrorLabel  , rules: [RequiredRule()])
+        validator.registerField(cell.jobAddressField , errorLabel:cell.addressErrorLabel  , rules: [RequiredRule()])
         
         validator.registerField(cell.jobRollField , errorLabel:cell.rollErrorLabel, rules: [RequiredRule()])
-        validator.registerField(cell.licenceRequiredField , errorLabel:cell.requiredLicenceErrorLabel, rules: [RequiredRule()])
+       
         validator.registerField(cell.startTimeField , errorLabel:cell.startTimeErrorLabel, rules: [RequiredRule()])
         validator.registerField(cell.hoursField , errorLabel:cell.hoursErrorLabel, rules: [RequiredRule()])
         validator.registerField(cell.dateField , errorLabel:cell.dateErrorLabel, rules: [RequiredRule()])
@@ -122,33 +181,79 @@ extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,Valida
 
         self.licecnceField = cell.licenceRequiredField
         
+        //self.configureTextField(autocompleteTextfield: cell.jobAddressField)
         
         textFieldTapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(textFieldTapGestureAction(_:)))
         textFieldTapRecognizer?.delegate = self
              cell.licenceRequiredField.addGestureRecognizer(textFieldTapRecognizer!)
         
-        self.cell = cell
+        cell.jobAddressField.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        cell.jobAddressField.autoCompleteTextFont = UIFont(name: "Lato-Light", size: 12.0)!
+        cell.jobAddressField.autoCompleteCellHeight = 35.0
+        cell.jobAddressField.maximumAutoCompleteCount = 20
+        cell.jobAddressField.hidesWhenSelected = true
+        cell.jobAddressField.hidesWhenEmpty = true
+        cell.jobAddressField.enableAttributedText = true
+        var attributes = [String:AnyObject]()
+        attributes[NSForegroundColorAttributeName] = UIColor.black
+        attributes[NSFontAttributeName] = UIFont(name: "Lato-Bold", size: 12.0)
+        cell.jobAddressField.autoCompleteAttributes = attributes
+        self.handleTextFieldInterfaces(autocompleteTextfield: cell.jobAddressField)
+        
+        
+        
+        
         
         return cell
     }
+    fileprivate func configureTextField(autocompleteTextfield:AutoCompleteTextField){
+       
+        
+        
+    }
+    fileprivate func handleTextFieldInterfaces(autocompleteTextfield:AutoCompleteTextField){
+        autocompleteTextfield.onTextChange = {[weak self] text in
+            if !text.isEmpty{
+                if let dataTask = self?.dataTask {
+                    dataTask.cancel()
+                }
+                self?.fetchAutocompletePlaces(text)
+            }
+        }
+        
+        autocompleteTextfield.onSelect = {[weak self] text, indexpath in
+            Location.geocodeAddressString(text, completion: { (placemark, error) -> Void in
+                if let coordinate = placemark?.location?.coordinate {
+                    self?.addAnnotation(coordinate, address: text)
+                    self?.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+                    self?.coordinate = coordinate
+                }
+            })
+        }
+    }
+    
+    //MARK: - Private Methods
+    fileprivate func addAnnotation(_ coordinate:CLLocationCoordinate2D, address:String?){
+        if let annotation = selectedPointAnnotation{
+            mapView.removeAnnotation(annotation)
+        }
+        
+        selectedPointAnnotation = MKPointAnnotation()
+        selectedPointAnnotation!.coordinate = coordinate
+        selectedPointAnnotation!.title = address
+        mapView.addAnnotation(selectedPointAnnotation!)
+    }
     
     func textFieldTapGestureAction(_ sender : UITapGestureRecognizer)  {
-        print("move to next step")
-        
-        dropDown.anchorView = self.licecnceField
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-        dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
-        dropDown.show()
-        
     }
     
     func nextButtonPressed()  {
-        print("move to next step")
+
         validator.validate(self)
     }
     
     func cancelButtonPressed()  {
-        print("move to next step")
+        let _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
     func addLicence(_ sender : UIButton)  {
@@ -166,20 +271,24 @@ extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,Valida
                 return
             }
             self.cell?.licenceRequiredField.text = item
-            
-            let selectedLicenceObject = self.licences[index]
-            var index = self.selectedLicences.count
-            index -= 1
-            self.cell?.licenceView.addSubview((self.cell?.licenceView.addTagView(licence: selectedLicenceObject, callBackHandler: self, callback: #selector(self.removeLicence(_:)), lastTagIndex:index  , previousTags :(self.cell?.licenceView.subviews)! ))!)
-            
-            
-            self.selectedLicences.append(selectedLicenceObject)
-            
+            self.addTagView(selectedLicenceObject:self.licences[index])
         }
     }
-    
+    func addTagView(selectedLicenceObject : Licence) {
+        
+        // this logic is bullshit can crash if any change made in addTagview method
+        // be very cardfull changing anything in that method
+        // TO DO : NEED TO CHANGE IT ASAP-
+        var index = self.selectedLicences.count
+        index -= 1
+        self.cell?.licenceView.addSubview((self.cell?.licenceView.addTagView(licence: selectedLicenceObject, callBackHandler: self, callback: #selector(self.removeLicence(_:)), lastTagIndex:index  , previousTags :(self.cell?.licenceView.subviews)! ))!)
+        self.selectedLicences.append(selectedLicenceObject)
+        
+        
+        
+    }
     func showStartDropDownMenu(_ sender : UIButton)  {
-        print("move to next step")
+       
         
         let dropDown =  self.showDropDownMenu(onView: sender, dataForDropDownMenu: self.timeArray)
         dropDown.show()
@@ -194,18 +303,17 @@ extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,Valida
         
     }
     func showDateDropDownMenu(_ sender : UIButton)   {
-        print("move to next step")
+        
        
-        let calendar    =   Calendar(identifier: .gregorian)
-        let startDate   =   Date.init(timeIntervalSinceNow: 0)
-        let endDate     =   Date.init(timeIntervalSinceNow: 24*60*60*7-1)
+        let calendar  : Calendar    =   Calendar(identifier: .gregorian)
+        let startDate : Date        =   Date.init(timeIntervalSinceNow: 0)
+        let endDate   : Date        =   Date.init(timeIntervalSinceNow: 24*60*60*7-1)
         
        let dateRange = calendar.dateRange(start: startDate, end: endDate, stepUnits: .day, stepValue: 1)
         
         let datesInRange = Array(dateRange)
     
-        let stringDates = datesInRange.map{$0.toString(format:DateFormatType.custom("dd MMMM yyyy"))}
-        print(stringDates)
+        let stringDates = datesInRange.map{$0.toString(format:DateFormatType.custom("dd MMM yyyy"))}
        let dropDown =  self.showDropDownMenu(onView: sender, dataForDropDownMenu: stringDates)
         
         dropDown.show()
@@ -251,7 +359,41 @@ extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,Valida
         // after user have corrected all the fields remove the error labels text
         // removeErrorLabelText()
         
+        if self.selectedLicences.count == 0 {
+            
+            self.cell?.requiredLicenceErrorLabel.text = "Select an SIA Licence"
+            return
+        }
+        if self.coordinate == nil{
+            
+            self.cell?.addressErrorLabel.text = "Please select a location from suggestions"
+            return
+        }
+        let price = self.cell?.pricePerHourField.text?.replacingOccurrences(of: "£", with: "")
+        let hour = self.cell?.hoursField.text?.replacingOccurrences(of: "hr", with: "").replacingOccurrences(of: " ", with: "")
+        //hour?.trimmingCharacters(in: " ")
+        guard let coord  = self.coordinate else {
+            return
+        }
+//        let latitude = "\(coord.latitude)"
+//        let longitude = "\(coord.longitude)"
+        if self.isEditingShift! {
+            
+            self.shift?.role = self.cell?.jobRollField.text
+            self.shift?.address = self.cell?.jobAddressField.text
+            self.shift?.from_time = self.cell?.startTimeField.text
+            self.shift?.shift_hours = hour
+            self.shift?.price_per_hour = price
+            self.shift?.shift_date = self.cell?.dateField.text
+            self.shift?.required_licenses = self.selectedLicences
+            self.shift?.lat = coord.latitude
+            self.shift?.lng = coord.longitude
+            
+        }else{
+            self.shift = Shift(role: self.cell?.jobRollField.text, from_time: self.cell?.startTimeField.text, shift_hours:hour , address: self.cell?.jobAddressField.text, price_per_hour:price , shift_date: self.cell?.dateField.text, required_licenses: self.selectedLicences,latitude:coord.latitude,longitude:coord.longitude)
+        }
         
+        self.moveToNextStep()
     }
     
     func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
@@ -284,6 +426,28 @@ extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,Valida
             return (gestureRecognizer == textFieldTapRecognizer);
     }
    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation {
+            //return nil so map view draws "blue dot" for standard user location
+            return nil
+        }
+        
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if pinView == nil {
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = false
+            pinView!.image = UIImage(named:"Map Marker")!
+            
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+        
+    }
 }
 
 // NETWORKING
@@ -318,5 +482,16 @@ extension AddShiftController{
             
             
         })
+    }
+    
+    func moveToNextStep()  {
+        
+        let storyboard = UIStoryboard.init(name: "AddShift", bundle: nil)
+        
+        let shiftDetailVC : ShiftDetailController = storyboard.instantiateViewController()
+        
+        shiftDetailVC.shift = self.shift!
+        shiftDetailVC.isEditingShift = self.isEditingShift
+        self.navigationController?.pushViewController(shiftDetailVC, animated: true)
     }
 }

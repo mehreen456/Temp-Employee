@@ -10,7 +10,10 @@ import UIKit
 import IQKeyboardManagerSwift
 import SwiftyUserDefaults
 import DropDown
+import Intercom
 
+let INTERCOM_APP_ID = "swxpcq0d"
+let INTERCOM_API_KEY = "ios_sdk-7f8f6a7a251f2557b34c28ae278f9bcb0b4e0991"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,9 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         IQKeyboardManager.sharedManager().enable = true
-
         setRootViewController()
-        DropDown.startListeningToKeyboard()
+        
+        
+        Intercom.setApiKey(INTERCOM_API_KEY, forAppId: INTERCOM_APP_ID)
         return true
     }
     
@@ -44,6 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //Register for push notifications
+        //For more info, see: https://developers.intercom.com/v2.0/docs/ios-push-notifications
+        let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -81,12 +92,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // instantiate your desired ViewController
             let rootController : UITabBarController  = storyboard.instantiateViewController(withIdentifier: "TabViewController") as! UITabBarController
             self.window?.rootViewController = rootController
-            
+            DropDown.startListeningToKeyboard()
         }
         
     }
     
     func setRootController(root controller : UIViewController) {
+        
         
         navigationController  =  self.window?.rootViewController as? UINavigationController
         

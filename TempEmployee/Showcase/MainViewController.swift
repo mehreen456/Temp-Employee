@@ -11,6 +11,8 @@ import BWWalkthrough
 import SwiftValidator
 import SwiftyUserDefaults
 import PKHUD
+import Intercom
+
 class MainViewController: UIViewController, BWWalkthroughViewControllerDelegate {
 
     var needWalkthrough:Bool = true
@@ -143,6 +145,7 @@ extension MainViewController{
                     Defaults[.accessToken] = user.access_token
                     Defaults[.accessTokenExpiresIn] = user.expires_in!
                     Defaults[.hasUserRegistered] = true
+                     Intercom.registerUser(withEmail: email)
                     self.moveToNextRegistrationStep()
                 }else{
                     HUD.flash(.error, delay: 1.0)

@@ -19,12 +19,4 @@ extension UITextField{
         }
     }
     
-    @IBInspectable var placeHolderFont: UIFont? {
-        get {
-            return self.placeHolderFont
-        }
-        set {
-            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSFontAttributeName: newValue!])
-        }
-    }
 }

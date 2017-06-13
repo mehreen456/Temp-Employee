@@ -19,12 +19,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CircleProgressBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DropDown.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JVFloatLabeledTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -45,6 +55,16 @@
 			<false/>
 		</dict>
 		<key>Pods-TempEmployeeUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SkyFloatingLabelTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,7 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24C28054CAFFD905331C6270CC8F288C</key>
+		<key>2A4448146C785C426971111F117D773C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38D738FA6F332E9798A693FA96B20698</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>52CD5AAE7360B766F86EDD2680816DB2</key>
+		<key>5720C675ACAF6EF75916F49BD0E76185</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5794E1D359D17CFBD945A50BBF1CA3C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F9FE73280F6B65BC578F65DC25BE586</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,7 +147,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C02CBF400AE05E4FF452F61F864AD4B6</key>
+		<key>AC7C64BD7E518F884D20362409D3CE85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B545B48FA0CEE58E0B8D9309EE4CFF7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,7 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB0DF1F2FF20353CEFB9A671D0CA89F6</key>
+		<key>DB17F5E357F9F4DAA8AE08D20C7A9163</key>
 		<dict>
 			<key>primary</key>
 			<true/>

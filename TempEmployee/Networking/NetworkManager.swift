@@ -28,7 +28,7 @@ class NetworkManager {
 }
 extension NetworkManager {
     
-    static func callServer(with_request request: URLRequestConvertible, completionHandler: @escaping (Result<[String:AnyObject]>) -> Void){
+    static func callServer(with_request request: URLRequestConvertible, completionHandler: @escaping (Result<[String:Any]>) -> Void){
         
         Alamofire.request(request).responseJSON { response in
             if let errorData = response.result.error {
@@ -37,8 +37,7 @@ extension NetworkManager {
             }
             if let data = response.data {
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as?  [String: AnyObject]
-                    print(json)
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as?  [String: Any]
                     completionHandler(.Success(json!))
                 }catch{
                     

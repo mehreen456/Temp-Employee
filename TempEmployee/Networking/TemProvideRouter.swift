@@ -16,14 +16,14 @@ enum TemProvideRouter: URLRequestConvertible {
   static let baseURLString = "https://devapi.temprovide.com/v1/"
   //static let authenticationToken = "Basic xxx"
     
-  case get
-  case getSIALicence
-  case login(String,String)
-  case postLicenceInfo([[String:String]])
-  case postProfilePic(String)
-  case postPaymentDetails(String,String,String)
-  case postSlotId(Int,Int)
-    
+        case get
+        case getSIALicence
+        case login(String,String)
+        case create(Shift)
+        case update(Shift)
+        case postSlotId(Int,Int)
+        case deleteShift(Int)
+        case postRating(Int,Int,Int,String) // jobseeker ID, shift ID, Rating Int, Review text
     
   func asURLRequest() throws -> URLRequest {
    
@@ -33,8 +33,12 @@ enum TemProvideRouter: URLRequestConvertible {
       switch self {
       case .get,.getSIALicence:
         return .get
-      case .login,.postLicenceInfo,.postProfilePic,.postPaymentDetails,.postSlotId:
+      case .login,.create,.postSlotId,.postRating:
         return .post
+      case .deleteShift:
+        return .delete
+      case .update:
+        return .put
       }
     }
     
@@ -42,20 +46,19 @@ enum TemProvideRouter: URLRequestConvertible {
     // In case of GET and DELETE call return nil
     let params: ([String: Any]?) = {
       switch self {
-      case .get:
+      case .get ,.deleteShift:
         return nil
       case .getSIALicence:
         return nil
       case .login(let email, let password):
         return (Params.paramsForLogin(email: email, password: password))
-      case .postLicenceInfo(let details):
-        return (Params.paramsForPostLicenceDetails(info: details))
-      case .postProfilePic(let path):
-        return (Params.paramsForPostProfilePic(info: path))
-      case .postPaymentDetails(let name,let number,let sortcode):
-        return (Params.paramsForPostPaymentDetails(accountName: name, accountNumber: number, sortCode: sortcode))
+      case .create(let shift),.update(let shift):
+        return (Params.paramsForPostShift(data: shift))
       case .postSlotId(_ , let slotID):
         return (Params.paramsForSlotBooking(slotID: slotID))
+      case .postRating(let jobseekerID, let shiftID, let Rating, let reviewText):
+        return Params.paramsForPostRating(jobseekerID: jobseekerID, shiftID: shiftID, rating: Rating, review: reviewText)
+      
       }
     }()
     let url: URL = {
@@ -68,15 +71,17 @@ enum TemProvideRouter: URLRequestConvertible {
         relativePath = Constants.EndPoints.Get.licences
       case .login:
         relativePath = Constants.EndPoints.Post.Login
-      case .postLicenceInfo:
-        relativePath = Constants.EndPoints.Post.LicenceDetails
-      case .postProfilePic:
-        relativePath = Constants.EndPoints.Post.ProfilePic
-      case .postPaymentDetails:
-        relativePath = Constants.EndPoints.Post.PaymentDetails
+      case .create:
+        relativePath = Constants.EndPoints.Post.CreateShift
+      case .postRating:
+        relativePath = Constants.EndPoints.Post.JobSeekerRating
       case .postSlotId(let jobseekerID , _):
         print("\(jobseekerID)")
         relativePath = ""
+      case .deleteShift(let id):
+        relativePath = "\(Constants.EndPoints.Get.shifts)/\(id)"
+      case .update(let shift):
+        relativePath = "\(Constants.EndPoints.Get.shifts)/\(shift.id!)"
       }
         
         var url = URL(string: TemProvideRouter.baseURLString)!
@@ -97,7 +102,7 @@ enum TemProvideRouter: URLRequestConvertible {
     encoding = JSONEncoding.default
     
 //    switch self {
-//    case .get:
+//    case .deleteShift:
 //        encoding = URLEncoding.default
 //    default:
 //         encoding = JSONEncoding.default

@@ -22,8 +22,8 @@ struct Constants {
         struct Post {
             static let Login : String                   = "employers/login"
             static let LicenceDetails : String          = "employers/licenseDetails"
-            static let ProfilePic : String              = "employers/uploadImage"
-            static let PaymentDetails : String          = "employers/paymentDetails"
+            static let CreateShift : String              = "employers/shifts"
+            static let JobSeekerRating : String          = "employers/jobSeekerRating"
         }
         
         
@@ -83,6 +83,11 @@ struct Constants {
     struct Shift {
         static let defaultPrice : Int                        = 8
         static let defaultHours : Int                        = 8
-        static let time : [String]                           = ["1AM","2AM","3AM","4AM","5AM","6AM","7AM","8AM","9AM","10AM","11AM","12AM","1PM","2PM","3PM","4PM","5PM","6PM","7PM","8PM","9PM","10PM","11PM","12PM"]
+        static let time : [String]                           = ["01:00 AM","02:00 AM","03:00 AM","04:00 AM","05:00 AM","06:00 AM","07:00 AM","08:00 AM","09:00 AM","10:00 AM","11:00 AM","12:00 AM","01:00 PM","02:00 PM","03:00 PM","04:00 PM","05:00 PM","06:00 PM","07:00 PM","08:00 PM","09:00 PM","10:00 PM","11:00 PM","12:00 PM"]
+    }
+    
+    struct GoogleAutoComplete {
+        static let googleMapsKey : String = "AIzaSyAhpwK4UEihJFgM68PG770r9zTzD4tKtmQ"
+        static let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     }
 }

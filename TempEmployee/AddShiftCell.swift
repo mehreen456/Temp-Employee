@@ -11,8 +11,8 @@ import UIKit
 
 class AddShiftCell: UITableViewCell {
 
-    @IBOutlet weak var jobAddressTxtView : UITextView!
     
+    @IBOutlet weak var jobAddressField: AutoCompleteTextField!
     @IBOutlet weak var licenceView: UIView!
     
     @IBOutlet weak var jobRollField: UITextField!

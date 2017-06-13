@@ -42,7 +42,7 @@ struct LicenceService {
                 
             case .Success(let response):
                 print (response )
-                let object = SIALicenc(jsonDict: response)
+                let object = SIALicenc(jsonDict: response as JSONDict)
                 print("parsed data = ", object)
                 completionHandler(.Success(object))
                 

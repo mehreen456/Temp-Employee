@@ -47,13 +47,14 @@ extension UIView{
     
     func addTagView(licence : Licence ,callBackHandler : AnyObject, callback:Selector ,lastTagIndex : Int,previousTags:[UIView]) -> UIView {
         
-        var tagView = Bundle.main.loadNibNamed("tagView", owner: self, options: nil)?.first as! UIView
-        var label = tagView.viewWithTag(400) as! UILabel
-        var cancelButton = tagView.viewWithTag(401) as! UIButton
+        let tagView = Bundle.main.loadNibNamed("tagView", owner: self, options: nil)?.first as! UIView
+        let label = tagView.viewWithTag(400) as! UILabel
+        let cancelButton = tagView.viewWithTag(401) as! UIButton
         cancelButton.addTarget(callBackHandler, action: callback ,for: .touchUpInside)
         label.text = licence.license_name
         label.tag = licence.id as Int
-        var calculatedWidth = licence.license_name.width(withConstrainedHeight: label.frame.size.height, font: label.font) + cancelButton.frame.size.width + 5
+        cancelButton.tag = licence.id as Int
+        let calculatedWidth = licence.license_name.width(withConstrainedHeight: label.frame.size.height, font: label.font) + cancelButton.frame.size.width + 5
         
         //let row = previousTags.count / 2
         //let Y = (row * Int(label.frame.size.height))
@@ -62,10 +63,9 @@ extension UIView{
             tagView.frame = CGRect(x: 15, y:5 , width:calculatedWidth, height: label.frame.size.height)
         }else {
             
-            var previousTagMaximumX = previousTags[lastTagIndex].frame.maxX
-            var previousTagY = previousTags[lastTagIndex].frame.origin.y
+            let previousTagMaximumX = previousTags[lastTagIndex].frame.maxX
+            let previousTagY = previousTags[lastTagIndex].frame.origin.y
             
-            print("previousTagMaximumX = \(previousTagMaximumX) previousTagY = \(previousTagY) lastTagIndex = \(lastTagIndex)")
             if ((previousTagMaximumX + calculatedWidth) < self.frame.size.width ){
             tagView.frame = CGRect(x: previousTagMaximumX+10, y: previousTagY , width:calculatedWidth, height: label.frame.size.height)
         

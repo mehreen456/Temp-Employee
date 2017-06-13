@@ -6,16 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Networking/LoginService.swift"
-            timestampString = "517922518.918392"
+            filePath = "Pods/SkyFloatingLabelTextField/Sources/SkyFloatingLabelTextField.swift"
+            timestampString = "518614875.250791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "loginEmployerWith(email:password:completionHandler:)"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "updatePlaceholder()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SkyFloatingLabelTextField/Sources/SkyFloatingLabelTextField.swift"
+            timestampString = "518614883.826698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "updatePlaceholder()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Showcase/MainViewController.swift"
-            timestampString = "518037332.11495"
+            filePath = "TempEmployee/Networking/CreateShiftService.swift"
+            timestampString = "518645891.838899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "moveToNextRegistrationStep()"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "createShift(shift:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +57,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Controllers/Add Shift/AddShiftController.swift"
-            timestampString = "518481044.857728"
+            filePath = "TempEmployee/Networking/CreateShiftService.swift"
+            timestampString = "518645966.922213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "validationSuccessful()"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "createShift(shift:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Controllers/Add Shift/BillViewController.swift"
+            timestampString = "518736179.480327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "BillViewController"
+            landmarkType = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Controllers/ShiftsViewController.swift"
+            timestampString = "519040334.702499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "deleteShift(service:shift:cellIndexPath:showIndicator:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Networking/Params.swift"
+            timestampString = "518780513.487076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "paramsForPostShift(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TempEmployee/Controllers/Add Shift/AddShiftController.swift"
-            timestampString = "518481044.857728"
+            timestampString = "518790312.958704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "addLicence(_:)"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "addTagView(selectedLicenceObject:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,44 +137,44 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Controllers/Add Shift/AddShiftController.swift"
-            timestampString = "518481044.857728"
+            filePath = "TempEmployee/UIView.swift"
+            timestampString = "518783531.341251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "addLicence(_:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "addTagView(licence:callBackHandler:callback:lastTagIndex:previousTags:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TempEmployee.AddShiftController.(addLicence (__ObjC.UIButton) -&gt; ()).(closure #2)"
+                  symbolName = "(extension in TempEmployee):__ObjC.UIView.addTagView (licence : TempEmployee.Licence, callBackHandler : Swift.AnyObject, callback : ObjectiveC.Selector, lastTagIndex : Swift.Int, previousTags : Swift.Array&lt;__ObjC.UIView&gt;) -&gt; __ObjC.UIView"
                   moduleName = "TempEmployee"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/KashifSaeed/Attribes/TempEmployee/TempEmployee/Controllers/Add%20Shift/AddShiftController.swift"
-                  timestampString = "518472113.085397"
+                  urlString = "file:///Users/KashifSaeed/Attribes/TempEmployee/TempEmployee/UIView.swift"
+                  timestampString = "518786219.95322"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "436">
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "68">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TempEmployee.AddShiftController.(addLicence (__ObjC.UIButton) -&gt; ()).(closure #2).(closure #1)"
+                  symbolName = "(extension in TempEmployee):__ObjC.UIView.addTagView (licence : TempEmployee.Licence, callBackHandler : Swift.AnyObject, callback : ObjectiveC.Selector, lastTagIndex : Swift.Int, previousTags : Swift.Array&lt;__ObjC.UIView&gt;) -&gt; __ObjC.UIView"
                   moduleName = "TempEmployee"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/KashifSaeed/Attribes/TempEmployee/TempEmployee/Controllers/Add%20Shift/AddShiftController.swift"
-                  timestampString = "518472113.08795"
+                  urlString = "file:///Users/KashifSaeed/Attribes/TempEmployee/TempEmployee/UIView.swift"
+                  timestampString = "518786219.955113"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "3208">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -121,60 +185,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Controllers/Add Shift/AddShiftController.swift"
-            timestampString = "518481044.857728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "addLicence(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Controllers/Add Shift/AddShiftController.swift"
-            timestampString = "518481044.857728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "addLicence(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Controllers/Add Shift/AddShiftController.swift"
-            timestampString = "518481044.857728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "addLicence(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TempEmployee/UIView.swift"
-            timestampString = "518482042.407726"
+            timestampString = "518783720.826953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "addTagView(licence:callBackHandler:callback:lastTagIndex:previousTags:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -185,13 +201,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TempEmployee/Networking/TemProvideRouter.swift"
-            timestampString = "518521110.021438"
+            filePath = "TempEmployee/Controllers/Add Shift/BillViewController.swift"
+            timestampString = "518786617.953048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "asURLRequest()"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "updateShift(service:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Controllers/Add Shift/BillViewController.swift"
+            timestampString = "518789108.446269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "updateShift(service:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Controllers/ViewShiftInfoController.swift"
+            timestampString = "518887963.10359"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "whatsAppButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Controllers/ViewShiftInfoController.swift"
+            timestampString = "518887963.10359"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "openSharedURl(str:type:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Controllers/ViewShiftInfoController.swift"
+            timestampString = "518887963.10359"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "openSharedURl(str:type:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/Models/ShiftStruct.swift"
+            timestampString = "518989049.63569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "init(role:from_time:interview_time:shift_hours:address:price_per_hour:shift_date:reporting_to:phone:details:special_info:site_instructions:required_licenses:id:assigned_job_seeker_id:lat:lng:assign_status:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TempEmployee/CGFloatExtension.swift"
+            timestampString = "518991538.232299"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "roundDown()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

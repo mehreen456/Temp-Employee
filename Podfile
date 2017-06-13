@@ -16,6 +16,11 @@ target 'TempEmployee' do
   pod 'SwiftyUserDefaults'
   pod 'AFDateHelper'
   pod 'DropDown'
+  pod 'JVFloatLabeledTextField'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'SDWebImage'
+  pod 'Intercom'
+  pod 'CircleProgressBar', '~> 0.32’
   target 'TempEmployeeTests' do
     inherit! :search_paths
     # Pods for testing

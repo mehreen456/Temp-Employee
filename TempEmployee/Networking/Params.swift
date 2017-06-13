@@ -24,13 +24,26 @@ class Params {
             ]
     }
     
-    public static func paramsForPostLicenceDetails(info : [[String:String]]) -> [String:Any] {
+    public static func paramsForPostShift(data : Shift) -> [String:Any] {
         
-        
-        return [
-            "job_seeker_id":Defaults[.accessToken] ?? "",
-            "license_details":info
-        ]
+        let licenceIDArray : [NSNumber] = data.required_licenses.flatMap{$0.id}
+        let dic =  [
+            "address":data.address!,
+            "role":data.role!,
+            "shift_date":data.shift_date!,
+            "from_time":data.from_time!,
+            "shift_hours":data.shift_hours!,
+            "price_per_hour":data.price_per_hour!,
+            "reporting_to":data.reporting_to!,
+            "phone":data.phone!,
+            "details":data.details!,
+            "special_info":data.special_info!,
+            "site_instructions":data.site_instructions!,
+            "lat": data.lat!,
+            "lng": data.lng!,
+            "required_license":licenceIDArray,
+        ] as [String : Any]
+        return dic
     }
     
     public static func paramsForPostProfilePic(info : String) -> [String:Any] {
@@ -41,14 +54,14 @@ class Params {
             "image_string":info
         ]
     }
-    public static func paramsForPostPaymentDetails(accountName : String,accountNumber:String,sortCode:String) -> [String:Any] {
+    public static func paramsForPostRating(jobseekerID : Int ,shiftID:Int,rating:Int,review:String) -> [String:Any] {
         
         
         return [
-            "job_seeker_id":Defaults[.accessToken] ?? "",
-            "account_name":accountName,
-            "account_number":accountNumber,
-            "sort_code":sortCode
+            "job_seeker_id":jobseekerID,
+            "shift_id":shiftID,
+            "rating":rating,
+            "review":review
         ]
     }
     
