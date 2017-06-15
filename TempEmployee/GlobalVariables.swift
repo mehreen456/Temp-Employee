@@ -14,8 +14,8 @@ struct Constants {
     
     struct Notifications {
         
-        static let licenceDetailsAdded: String          = "licenceDetailsAdded"
-        static let licenceSuccessfullyUploaded: String  = "licenceSuccessfullyUploaded"
+        static let shiftPosted: String          = "shiftPostedSuccessfully"
+        static let refreshShiftsList: String          = "refreshShifts"
     }
     
     struct EndPoints {
@@ -30,6 +30,7 @@ struct Constants {
         struct Get {
             
             static let shifts : String                      = "employers/shifts"
+            static let repostShift : String                 = "employers/repostShift"
             static let licences : String                    = "licenseTypes"
         }
         /**
@@ -52,7 +53,8 @@ struct Constants {
         static let accessToken : String                             = "access_token"
         static let accessTokenExpireIn : String                     = "accessTokenExpireIn"
         static let licencePosted : String                           = "licencePosted"
-        
+        static let email : String                                   = "employer_email"
+        static let password : String                                = "employer_password"
         
          static let Registered : String                 = "userRegistered"
          static let LicencesUploaded : String           = "licencesUploaded"

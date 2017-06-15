@@ -145,6 +145,8 @@ extension MainViewController{
                     Defaults[.accessToken] = user.access_token
                     Defaults[.accessTokenExpiresIn] = user.expires_in!
                     Defaults[.hasUserRegistered] = true
+                    Defaults[.email] = email
+                    Defaults[.password] = password
                      Intercom.registerUser(withEmail: email)
                     self.moveToNextRegistrationStep()
                 }else{

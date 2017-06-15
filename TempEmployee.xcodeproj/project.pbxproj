@@ -15,7 +15,7 @@
 		475FDA811EE2DB5E00BC117C /* AddShift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA801EE2DB5E00BC117C /* AddShift.storyboard */; };
 		475FDA821EE2DB5E00BC117C /* AddShift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA801EE2DB5E00BC117C /* AddShift.storyboard */; };
 		475FDA831EE2DB5E00BC117C /* AddShift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475FDA801EE2DB5E00BC117C /* AddShift.storyboard */; };
-		47748CE51EE03B5900BEEB90 /* ShiftsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47748CE41EE03B5900BEEB90 /* ShiftsService.swift */; };
+		476515C91EEFF766008675E1 /* ShiftsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476515C81EEFF766008675E1 /* ShiftsService.swift */; };
 		4775CE921EE49CD90089B59C /* AddShiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4775CE911EE49CD90089B59C /* AddShiftCell.swift */; };
 		4777261B1EDECBD400ACFBCD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777261A1EDECBD400ACFBCD /* NetworkManager.swift */; };
 		4777261E1EDECBE100ACFBCD /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777261C1EDECBE100ACFBCD /* Params.swift */; };
@@ -133,7 +133,7 @@
 		475DFF5D1EE5B1E4001B8229 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		475FDA7E1EE2D5B300BC117C /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		475FDA801EE2DB5E00BC117C /* AddShift.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddShift.storyboard; sourceTree = "<group>"; };
-		47748CE41EE03B5900BEEB90 /* ShiftsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftsService.swift; sourceTree = "<group>"; };
+		476515C81EEFF766008675E1 /* ShiftsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftsService.swift; sourceTree = "<group>"; };
 		4775CE911EE49CD90089B59C /* AddShiftCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShiftCell.swift; sourceTree = "<group>"; };
 		4777261A1EDECBD400ACFBCD /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4777261C1EDECBE100ACFBCD /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
@@ -266,11 +266,11 @@
 		477726191EDECBC400ACFBCD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				476515C81EEFF766008675E1 /* ShiftsService.swift */,
 				477726201EDECBF800ACFBCD /* LoginService.swift */,
 				4777261C1EDECBE100ACFBCD /* Params.swift */,
 				4777261D1EDECBE100ACFBCD /* TemProvideRouter.swift */,
 				4777261A1EDECBD400ACFBCD /* NetworkManager.swift */,
-				47748CE41EE03B5900BEEB90 /* ShiftsService.swift */,
 				477980ED1EE6D80300855AED /* LicenceService.swift */,
 				4778ACF11EE8A0E1004D834E /* CreateShiftService.swift */,
 				47F05FEB1EE987C400353CDD /* GooglePalces.swift */,
@@ -282,11 +282,11 @@
 		477726221EDEE03400ACFBCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				478F52041EEC995C00A351F6 /* ThankViewController.swift */,
 				479C5ECD1EE4871D00090094 /* Add Shift */,
 				4786196F1EDF480800870F12 /* Tabs */,
 				4791C9771EDCAA6A0028972A /* Showcase */,
 				477EC66D1EEC875E00E659E7 /* ViewShiftInfoController.swift */,
+				478F52041EEC995C00A351F6 /* ThankViewController.swift */,
 				478F52021EEC993A00A351F6 /* RateViewController.swift */,
 			);
 			path = Controllers;
@@ -581,7 +581,7 @@
 				TargetAttributes = {
 					47881CB51EDC5E6300FEC0EE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = H955B757YX;
+						DevelopmentTeam = 8YDC93EE3T;
 						ProvisioningStyle = Automatic;
 					};
 					47881CC91EDC5E6300FEC0EE = {
@@ -858,7 +858,7 @@
 				478EB9A51EDD85C3003CC1C0 /* UIView.swift in Sources */,
 				475C47B41EEFEB1E009B55F1 /* AddShiftTabController.swift in Sources */,
 				47881CBC1EDC5E6300FEC0EE /* ViewController.swift in Sources */,
-				47748CE51EE03B5900BEEB90 /* ShiftsService.swift in Sources */,
+				476515C91EEFF766008675E1 /* ShiftsService.swift in Sources */,
 				4777261E1EDECBE100ACFBCD /* Params.swift in Sources */,
 				479D4F871EE9C4C300214DE3 /* AutoCompleteTextField.swift in Sources */,
 				477BF73C1EEAD70E00888994 /* TableViewExtension.swift in Sources */,
@@ -954,6 +954,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1004,6 +1005,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1028,11 +1030,12 @@
 			baseConfigurationReference = 48451DB79C1071DE42388965 /* Pods-TempEmployee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H955B757YX;
+				DEVELOPMENT_TEAM = 8YDC93EE3T;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TempEmployee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.limited.TempEmployee654;
+				PRODUCT_BUNDLE_IDENTIFIER = com.limited.TempEmployee007;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1044,11 +1047,12 @@
 			baseConfigurationReference = D7636ACE8DEF07F704C62F92 /* Pods-TempEmployee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H955B757YX;
+				DEVELOPMENT_TEAM = 8YDC93EE3T;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TempEmployee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.limited.TempEmployee654;
+				PRODUCT_BUNDLE_IDENTIFIER = com.limited.TempEmployee007;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

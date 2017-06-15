@@ -21,6 +21,8 @@ target 'TempEmployee' do
   pod 'SDWebImage'
   pod 'Intercom'
   pod 'CircleProgressBar', '~> 0.32’
+  # Pods for SpringAnimation
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
   target 'TempEmployeeTests' do
     inherit! :search_paths
     # Pods for testing

@@ -23,7 +23,7 @@ class ThankViewController: UIViewController {
     
     @IBAction func backToShiftsButtonPressed(_ sender: Any) {
         
-        
+        NotificationCenter.default.post(name:NSNotification.Name(rawValue: Constants.Notifications.refreshShiftsList) , object: nil)
         self.navigationController?.popToRootViewController(animated: true)
     }
 

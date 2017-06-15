@@ -49,7 +49,7 @@
                                     <constraint firstAttribute="height" constant="44" id="kIz-oa-0tN"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2E-nZ-Vma" customClass="CircleProgressBar">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2E-nZ-Vma" customClass="CircleProgressBar">
                                 <rect key="frame" x="240" y="58" width="44" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -76,6 +76,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBu-XA-Wnd">
+                                <rect key="frame" x="240" y="58" width="44" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="9"/>
+                                <state key="normal" title="REPOST">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.42352941179999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.99215686270000003" green="0.42352941179999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUESDAY 4TH MAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTd-gP-HLb">
                                 <rect key="frame" x="20" y="13" width="109" height="14"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
@@ -139,12 +158,15 @@
                             <constraint firstItem="Vhn-SS-QbS" firstAttribute="top" secondItem="HVV-fW-68g" secondAttribute="top" id="MMo-X2-5pK"/>
                             <constraint firstItem="JW8-lr-HL5" firstAttribute="top" secondItem="hKz-xV-cpJ" secondAttribute="bottom" constant="5.5" id="QrG-xI-CsZ"/>
                             <constraint firstItem="vTd-gP-HLb" firstAttribute="leading" secondItem="oi6-Hj-oxW" secondAttribute="leading" constant="20" id="RPa-pF-Rgc"/>
+                            <constraint firstItem="ZBu-XA-Wnd" firstAttribute="bottom" secondItem="2oQ-TY-iOH" secondAttribute="bottom" id="TF4-Bj-PmM"/>
                             <constraint firstAttribute="trailing" secondItem="hKz-xV-cpJ" secondAttribute="trailing" constant="20" id="UBf-JG-axG"/>
                             <constraint firstItem="Vhn-SS-QbS" firstAttribute="centerX" secondItem="2oQ-TY-iOH" secondAttribute="centerX" id="UO8-jS-B4X"/>
                             <constraint firstItem="H2E-nZ-Vma" firstAttribute="bottom" secondItem="2oQ-TY-iOH" secondAttribute="bottom" id="Udl-Ct-FBH"/>
                             <constraint firstItem="H2E-nZ-Vma" firstAttribute="trailing" secondItem="2oQ-TY-iOH" secondAttribute="trailing" id="Yjz-gV-c5F"/>
                             <constraint firstAttribute="trailing" secondItem="gSn-S2-XTp" secondAttribute="trailing" constant="20" id="a4p-6r-2Np"/>
                             <constraint firstItem="1Y7-Y9-yRw" firstAttribute="leading" secondItem="oi6-Hj-oxW" secondAttribute="leading" constant="20" id="b5G-Qn-CXG"/>
+                            <constraint firstItem="ZBu-XA-Wnd" firstAttribute="trailing" secondItem="2oQ-TY-iOH" secondAttribute="trailing" id="eZK-gm-t5V"/>
+                            <constraint firstItem="ZBu-XA-Wnd" firstAttribute="leading" secondItem="2oQ-TY-iOH" secondAttribute="leading" id="g1C-9b-SJz"/>
                             <constraint firstAttribute="trailing" secondItem="gDn-Lc-y52" secondAttribute="trailing" id="gCy-p0-4r1"/>
                             <constraint firstItem="gDn-Lc-y52" firstAttribute="top" secondItem="oi6-Hj-oxW" secondAttribute="top" id="hyL-UM-5Ez"/>
                             <constraint firstItem="vTd-gP-HLb" firstAttribute="top" secondItem="oi6-Hj-oxW" secondAttribute="top" constant="13" id="jSx-rt-iz2"/>
@@ -152,6 +174,7 @@
                             <constraint firstItem="H2E-nZ-Vma" firstAttribute="top" secondItem="2oQ-TY-iOH" secondAttribute="top" id="k2q-s3-bHK"/>
                             <constraint firstAttribute="trailing" secondItem="2oQ-TY-iOH" secondAttribute="trailing" constant="20" id="k7F-F7-Jcj"/>
                             <constraint firstItem="hKz-xV-cpJ" firstAttribute="top" secondItem="c5T-hr-M0K" secondAttribute="bottom" constant="5" id="lcu-8z-1jt"/>
+                            <constraint firstItem="ZBu-XA-Wnd" firstAttribute="top" secondItem="2oQ-TY-iOH" secondAttribute="top" id="rQm-w9-pfq"/>
                             <constraint firstItem="JW8-lr-HL5" firstAttribute="leading" secondItem="oi6-Hj-oxW" secondAttribute="leading" constant="20" id="s3B-gn-sn4"/>
                             <constraint firstItem="gDn-Lc-y52" firstAttribute="leading" secondItem="oi6-Hj-oxW" secondAttribute="leading" id="ttv-28-MUZ"/>
                             <constraint firstItem="2oQ-TY-iOH" firstAttribute="top" secondItem="hKz-xV-cpJ" secondAttribute="bottom" constant="20.5" id="vPm-dO-EDa"/>
@@ -312,6 +335,7 @@
                 <outlet property="hideMoreButton" destination="mkh-tS-PgX" id="F1r-ao-o7A"/>
                 <outlet property="moreOptionsView" destination="ZNt-qa-bct" id="Vic-PB-T2d"/>
                 <outlet property="progressBar" destination="H2E-nZ-Vma" id="cKp-Ts-7V5"/>
+                <outlet property="repostButton" destination="ZBu-XA-Wnd" id="RUb-TB-6hU"/>
                 <outlet property="shiftApplicantImage" destination="gSn-S2-XTp" id="Prg-5h-ouQ"/>
                 <outlet property="shiftDate" destination="vTd-gP-HLb" id="iqf-lg-H53"/>
                 <outlet property="shiftJobAddress" destination="1Y7-Y9-yRw" id="1Q6-Av-ZfX"/>

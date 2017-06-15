@@ -10,14 +10,18 @@ import UIKit
 import PKHUD
 import QuartzCore
 import Intercom
+import AFDateHelper
 
 class ShiftsViewController: UIViewController {
 
     var footerView: FooterView?
     var footerViewFrame: CGRect?
-    var footerNeedsLayout : Bool! = true
     var indexPathToBeDeleted : IndexPath? // sets when user deletes any shift
-   
+    
+    var footerNeedsLayout  = true
+    var animateTableViewCell  = true // animate cells only one time
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -69,7 +73,14 @@ class ShiftsViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
         
-         Intercom.setLauncherVisible(true)
+        
+        
+        //self.isPostedWithinAnHour()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleRefresh(_:)), name: NSNotification.Name(rawValue: Constants.Notifications.shiftPosted), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleRefresh(_:)), name: NSNotification.Name(rawValue: Constants.Notifications.refreshShiftsList), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +92,7 @@ class ShiftsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         
-        if self.footerNeedsLayout! {
+        if self.footerNeedsLayout {
             footerView?.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
              self.footerViewFrame = self.footerView?.frame
             self.setupFooter()
@@ -120,6 +131,15 @@ class ShiftsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //self.fetchShifts(service: ShiftsService(), showIndicator: false)
+        
+        Intercom.setLauncherVisible(true)
+        Intercom.setBottomPadding(32)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        Intercom.setLauncherVisible(false)
     }
 }
 extension ShiftsViewController: UITableViewDataSource, UITableViewDelegate{
@@ -139,22 +159,18 @@ extension ShiftsViewController: UITableViewDataSource, UITableViewDelegate{
         cell.deleteButton.addTarget(self, action: #selector(deleteShift(_:)), for: .touchUpInside)
         cell.editButton.addTarget(self, action: #selector(editShift(_:)), for: .touchUpInside)
         cell.viewButton.addTarget(self, action: #selector(viewShift(_:)), for: .touchUpInside)
-        
+        cell.repostButton.addTarget(self, action: #selector(repostShift(_:)), for: .touchUpInside)
         cell.progressBar.setProgress(self.returnProgress(value: indexPath.row), animated: true)
         
         switch shift.assign_status!{
             
         case .pending:
             
-             let minStr = "MINS"
-             let str = NSMutableAttributedString(string: "\(minStr) UNTILL COVERED")
-             
-             str.addAttributes([NSFontAttributeName:UIFont(name:"Lato-Light", size: 10)!], range: NSMakeRange(0, minStr.characters.count))
-             str.addAttributes([NSFontAttributeName:UIFont(name:"Lato-Bold", size: 10)!], range: NSMakeRange(minStr.characters.count, str.length - minStr.characters.count))
-             
-               cell.shiftStatus.attributedText = str
-                cell.progressBar.isHidden = false
-                cell.attachTimer() // also set shiftPostedDate 
+            if shift.created_at != nil{
+                
+                cell.attachTimerIfNeed(shift:shift)
+            }
+            
         case .covered:
             
             let shiftStr = "SHIFT"
@@ -165,8 +181,9 @@ extension ShiftsViewController: UITableViewDataSource, UITableViewDelegate{
             
              cell.shiftStatus.attributedText = str
              cell.progressBar.isHidden = true
+             cell.repostButton.isHidden = true
         case .completed:
-            print("")
+            cell.completedView.alpha = 1
             
         }
         return cell
@@ -184,34 +201,61 @@ extension ShiftsViewController: UITableViewDataSource, UITableViewDelegate{
             
             nCell.completedView.isHidden = true
         }
-        nCell.alpha = 0
-        nCell.contentView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
-        footerView?.alpha = 0
-        footerView?.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: .calculationModeLinear, animations: {
-            // each keyframe needs to be added here
-            // within each keyframe the relativeStartTime and relativeDuration need to be values between 0.0 and 1.0
+        if self.animateTableViewCell{
+       
+            nCell.alpha = 0
+       
+            nCell.contentView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+        
+            footerView?.alpha = 0
+        
+            footerView?.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+       
+            UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: .calculationModeLinear, animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
-                
-                nCell.alpha = 1
-                nCell.contentView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                self.footerView?.alpha = 1
-                self.footerView?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-            })
+                // each keyframe needs to be added here
             
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
-                
-                nCell.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                self.footerView?.transform = CGAffineTransform(scaleX: 1, y: 1)
-                
-            })
-  
-        }, completion: {finished in
-            // any code entered here will be applied
-            // once the animation has completed
+                // within each keyframe the relativeStartTime and relativeDuration need to be values between 0.0 and 1.0
+            
            
-        })
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
+                
+                
+                    nCell.alpha = 1
+                
+                    nCell.contentView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                
+                    self.footerView?.alpha = 1
+                
+                    self.footerView?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            
+                })
+            
+            
+                UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
+                
+               
+                    nCell.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                
+                    self.footerView?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                
+            
+                })
+  
+       
+            }, completion: {finished in
+           
+                // any code entered here will be applied
+            
+                // once the animation has completed
+            
+                self.animateTableViewCell = false
+ 
+        
+            })
+        
+        
+        }
    
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -244,7 +288,12 @@ extension ShiftsViewController: UITableViewDataSource, UITableViewDelegate{
         let sObj = self.shiftsData[index.row]
         self.edit(shift: sObj)
     }
-    
+    func repostShift(_ sender:UIButton)  {
+        let index : IndexPath = self.tableView.indexPath(of: sender)!
+        let sObj = self.shiftsData[index.row]
+        
+        self.repostShift(service: ShiftsService(), shiftID: sObj.id, showIndicator: true)
+    }
     func viewShiftData(shift:Shift) {
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -281,7 +330,8 @@ extension ShiftsViewController{
                     self.errorAlert(description: response.message)
                 }
             case .Failure(let error):
-                //HUD.flash(.error, delay: 0.0)
+                
+                HUD.hide()
                 self.errorAlert(description: error.localizedDescription)
                 print(error)
             }
@@ -324,6 +374,36 @@ extension ShiftsViewController{
             }
         })
     }
+    
+    func repostShift(service:ShiftsService ,shiftID : Int, showIndicator:Bool)  {
+        
+        if showIndicator {
+            HUD.show(.progress,onView: self.view)
+        }
+        
+        service.repostShift(id: shiftID, completionHandler:   {result in
+            
+            switch result{
+                
+            case .Success(let response):
+                print(response)
+                HUD.hide()
+                if response.success{
+                    self.fetchShifts(service: ShiftsService(),showIndicator: true)
+                }else{
+                    HUD.hide()
+                    
+                    self.errorAlert(description: response.message)
+                }
+            case .Failure(let error):
+                
+                HUD.hide()
+                self.errorAlert(description: error.localizedDescription)
+                print(error)
+            }
+        })
+    }
+    
     func addNewShift(sender: UIButton!) {
         
         let storyboard = UIStoryboard.init(name: "AddShift", bundle: nil)
@@ -341,5 +421,5 @@ extension ShiftsViewController{
         self.navigationController?.pushViewController(addShiftVC, animated: true)
         
     }
-    
+   
 }

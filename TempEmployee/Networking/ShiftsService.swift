@@ -48,14 +48,14 @@ class Shifts : Meta{
                     
                     let status = ShiftStatus(rawValue: shift["assign_status"] as! Int)
                     
-                    var ShiftObject = Shift(role: shift["role"] as? String, from_time: shift["from_time"] as? String, interview_time: shift["interview_time"] as? String, shift_hours: shift["shift_hours"] as? String, address: shift["address"] as? String, price_per_hour: shift["price_per_hour"] as? String, shift_date: shift["shift_date"] as? String, reporting_to: shift["reporting_to"] as? String, phone: shift["phone"] as? String, details: shift["details"] as? String, special_info: shift["special_info"] as? String, site_instructions: shift["site_instructions"] as? String, required_licenses:  licenceArray, id : shift["id"] as! Int,assigned_job_seeker_id: shift["assigned_job_seeker_id"] as? Int, lat: shift["lat"] as! Double, lng : shift["lng"] as! Double, assign_status:status)
+                    var ShiftObject = Shift(role: shift["role"] as? String, from_time: shift["from_time"] as? String, interview_time: shift["interview_time"] as? String, shift_hours: shift["shift_hours"] as? String, address: shift["address"] as? String, price_per_hour: shift["price_per_hour"] as? String, shift_date: shift["shift_date"] as? String, reporting_to: shift["reporting_to"] as? String, phone: shift["phone"] as? String, details: shift["details"] as? String, special_info: shift["special_info"] as? String, site_instructions: shift["site_instructions"] as? String, required_licenses:  licenceArray, id : shift["id"] as! Int,assigned_job_seeker_id: shift["assigned_job_seeker_id"] as? Int, lat: shift["lat"] as! Double, lng : shift["lng"] as! Double, assign_status:status ,created_at:shift["created_at"] as? String)
                     
                     // I can't understand why jobseeker object is in Array
                     if shift["jobseeker_data"] != nil{
                     
                         let dict = (shift["jobseeker_data"] as? [Any])?.first as? [String:Any]
                         
-                    ShiftObject.jobSeeker = JobSeeker(email:dict?["email"] as? String , username: dict?["username"] as? String, phone: dict?["phone"] as? String, city: dict?["city"] as? String, post_code: dict?["post_code"] as? String, address1: dict?["address1"] as? String, address2: dict?["address2"] as? String, dob: dict?["dob"] as? String, ni_no: dict?["ni_no"] as? String, image_path: dict?["image_path"] as? String, average_rating: dict?["average_rating"] as? String)
+                    ShiftObject.jobSeeker = JobSeeker(email:dict?["email"] as? String , username: dict?["username"] as? String, phone: dict?["phone"] as? String, city: dict?["city"] as? String, post_code: dict?["post_code"] as? String, address1: dict?["address1"] as? String, address2: dict?["address2"] as? String, dob: dict?["dob"] as? String, ni_no: dict?["ni_no"] as? String, image_path: dict?["image_path"] as? String, average_rating: dict?["average_rating"] as? Int)
                     }
                     shifts.append(ShiftObject)
                 }
@@ -108,24 +108,17 @@ struct ShiftsService {
         })
         
     }
-    /*func bookSlot(with id:Int ,completionHandler: @escaping (Result<Meta> ) -> Void) {
+    func repostShift(id:Int, completionHandler: @escaping (Result<Meta> ) -> Void) {
         
-        NetworkManager.callServer(with_request: TemProvideRouter.postSlotId(Defaults[.jobSeekerID]!, id), completionHandler: {result in
+        NetworkManager.callServer(with_request: TemProvideRouter.repostShift(id), completionHandler: {result in
             
             switch result {
                 
             case .Success(let response):
                 print (response )
-                let object = Meta(jsonDict: response)
+                let object = Meta(jsonDict: response as JSONDict)
                 print("parsed data = ", object)
                 completionHandler(.Success(object))
-                /*let success = response["meta"]!["success"] as? Bool
-                 if success! {
-                 
-                 
-                 }else{
-                 
-                 }*/
                 
             case .Failure(let error):
                 completionHandler(.Failure(error))
@@ -133,7 +126,7 @@ struct ShiftsService {
             
         })
         
-    }*/
+    }
     
     
 }

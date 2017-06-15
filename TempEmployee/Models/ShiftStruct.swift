@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AFDateHelper
 
 public enum ShiftStatus :Int{
     case pending = 0
@@ -37,8 +38,9 @@ struct Shift  {
     var required_licenses: [Licence]
     var jobSeeker: JobSeeker?
     var assign_status : ShiftStatus!
+    var created_at : String!
     
-    init(role:String?,from_time: String?, interview_time: String?,shift_hours: String?,address: String?,price_per_hour: String?,shift_date: String?,reporting_to: String?,phone: String?,details: String?,special_info: String?,site_instructions: String?,required_licenses: [Licence],id:Int,assigned_job_seeker_id:Int?, lat: Double, lng:Double,assign_status:ShiftStatus!) {
+    init(role:String?,from_time: String?, interview_time: String?,shift_hours: String?,address: String?,price_per_hour: String?,shift_date: String?,reporting_to: String?,phone: String?,details: String?,special_info: String?,site_instructions: String?,required_licenses: [Licence],id:Int,assigned_job_seeker_id:Int?, lat: Double, lng:Double,assign_status:ShiftStatus!, created_at:String?) {
         
         self.id = id
         self.assigned_job_seeker_id = assigned_job_seeker_id
@@ -58,6 +60,7 @@ struct Shift  {
         self.site_instructions = site_instructions
         self.required_licenses = required_licenses
         self.assign_status = assign_status
+        self.created_at = created_at
         
     }
     
@@ -90,5 +93,14 @@ struct Shift  {
         return (subTotal + vat)
     }
     
-    
+    func isPostedWithinAnHour() -> DateComponents? {
+       
+        
+       let shiftCreatedAt =  Date.init(fromString: self.created_at, format: .custom("yyyy-MM-dd HH:mm:ss"), timeZone: TimeZoneType.utc, locale: Locale.init(identifier: "en_GB"))
+        
+        let currentDate = Date.init()
+        
+        return  Calendar.current.dateComponents([.hour,.minute], from: shiftCreatedAt!, to: currentDate)
+ 
+    }
 }

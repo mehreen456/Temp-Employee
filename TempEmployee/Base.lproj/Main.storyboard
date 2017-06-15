@@ -195,7 +195,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="we4-g3-c3s">
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="we4-g3-c3s">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                                 <connections>
                                     <outlet property="delegate" destination="Sxn-lJ-KP5" id="FRR-VN-oKJ"/>
@@ -314,31 +314,28 @@
                                                     <constraint firstAttribute="width" constant="44" id="rik-Qr-M8M"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8Y-5a-Umi">
-                                                <rect key="frame" x="14" y="77" width="104" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="104" id="2JF-06-1w6"/>
-                                                    <constraint firstAttribute="height" constant="22" id="mLp-3D-HoA"/>
-                                                </constraints>
-                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HfN-WX-6Bx">
                                                 <rect key="frame" x="14" y="77" width="104" height="22"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60U-V4-tMo">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
                                                         <state key="normal" image="Unselected Star"/>
+                                                        <state key="selected" image="Selected Star"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-Kn-QSC">
                                                         <rect key="frame" x="22" y="0.0" width="16" height="22"/>
                                                         <state key="normal" image="Unselected Star"/>
+                                                        <state key="selected" image="Selected Star"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgA-0X-b3W">
                                                         <rect key="frame" x="44" y="0.0" width="16" height="22"/>
                                                         <state key="normal" image="Unselected Star"/>
+                                                        <state key="selected" image="Selected Star"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZO-MS-sgY">
                                                         <rect key="frame" x="66" y="0.0" width="16" height="22"/>
                                                         <state key="normal" image="Unselected Star"/>
+                                                        <state key="selected" image="Selected Star"/>
                                                         <connections>
                                                             <action selector="ratingButtonPressed:" destination="Sxn-lJ-KP5" eventType="touchUpInside" id="mZb-8N-FNl"/>
                                                         </connections>
@@ -346,6 +343,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCM-KH-ZYd">
                                                         <rect key="frame" x="88" y="0.0" width="16" height="22"/>
                                                         <state key="normal" image="Unselected Star"/>
+                                                        <state key="selected" image="Selected Star"/>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -353,6 +351,17 @@
                                                     <constraint firstAttribute="width" constant="104" id="JLj-uf-y3R"/>
                                                 </constraints>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8Y-5a-Umi">
+                                                <rect key="frame" x="14" y="77" width="104" height="22"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="104" id="2JF-06-1w6"/>
+                                                    <constraint firstAttribute="height" constant="22" id="mLp-3D-HoA"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="ratingButtonPressed:" destination="Sxn-lJ-KP5" eventType="touchUpInside" id="hf4-ql-9pc"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijs-EE-50G">
                                                 <rect key="frame" x="156" y="76" width="51" height="23"/>
                                                 <state key="normal" image="Whats App Icon"/>
@@ -514,7 +523,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SOc-HD-gTf">
                                 <rect key="frame" x="53" y="200" width="270" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyS-Of-KNf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyS-Of-KNf" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -522,7 +531,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="7v5-hD-qMa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-Mi-qoF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-Mi-qoF" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="57" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -530,7 +539,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="9RI-or-CuT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-0G-KKf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-0G-KKf" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="114" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -538,7 +547,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="OMY-GC-q8i"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-nB-8w6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-nB-8w6" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="171" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -546,7 +555,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="vhF-0U-nQX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7q6-tX-l4v">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7q6-tX-l4v" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="228" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -674,7 +683,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your rating has  been accepted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ueo-Zb-8Dd">
-                                <rect key="frame" x="110" y="355" width="156" height="58"/>
+                                <rect key="frame" x="110" y="358" width="156" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="156" id="RUF-ez-5J8"/>
                                     <constraint firstAttribute="height" constant="58" id="qLP-0V-HTu"/>
@@ -684,10 +693,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THANK YOU!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYY-4o-fC4">
-                                <rect key="frame" x="117" y="319" width="142" height="29"/>
+                                <rect key="frame" x="108" y="316" width="160" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="M8d-fC-F5Q"/>
-                                    <constraint firstAttribute="width" constant="142" id="awW-ea-OSW"/>
+                                    <constraint firstAttribute="height" constant="35" id="M8d-fC-F5Q"/>
+                                    <constraint firstAttribute="width" constant="160" id="awW-ea-OSW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HalisR-Bold" family="Halis R" pointSize="22"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.59215686270000001" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -901,6 +910,7 @@
         <image name="Mask Group " width="375" height="667"/>
         <image name="Second Tab Icon" width="28" height="29"/>
         <image name="Selected Big Star" width="42" height="40"/>
+        <image name="Selected Star" width="16" height="15"/>
         <image name="Selected Tab" width="90" height="77"/>
         <image name="Third Tab Icon" width="14" height="30"/>
         <image name="Unselected Big Star" width="42" height="40"/>

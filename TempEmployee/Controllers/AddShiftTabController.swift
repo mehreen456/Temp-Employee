@@ -10,13 +10,15 @@ import UIKit
 
 class AddShiftTabController: UIViewController {
 
+    
+    var addShiftVC = AddShiftController()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let storyboard = UIStoryboard.init(name: "AddShift", bundle: nil)
-        let addShiftVC : AddShiftController = storyboard.instantiateViewController()
-        addChildViewController(addShiftVC)
-        view.addSubview(addShiftVC.view)
+         self.addShiftVC  = storyboard.instantiateViewController()
+        addChildViewController(self.addShiftVC)
+        view.addSubview(self.addShiftVC.view)
         addShiftVC.didMove(toParentViewController: self)
     }
 
@@ -25,6 +27,10 @@ class AddShiftTabController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addShiftVC.clearPrefilledData()
+    }
 
     /*
     // MARK: - Navigation

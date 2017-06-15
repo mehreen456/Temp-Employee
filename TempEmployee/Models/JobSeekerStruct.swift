@@ -20,5 +20,5 @@ struct JobSeeker {
     let dob : String?
     let ni_no : String?
     let image_path : String?
-    let average_rating : String?
+    let average_rating : Int?
 }

@@ -12,6 +12,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SkyFloatingLabelTextField (3.1.0)
+  - Spring (1.0.3)
   - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.4)
   - SwiftyUserDefaults (3.0.0)
@@ -28,16 +29,23 @@ DEPENDENCIES:
   - PKHUD (~> 4.0)
   - SDWebImage
   - SkyFloatingLabelTextField (~> 3.0)
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftyJSON (~> 3.1)
   - SwiftyUserDefaults
 
 EXTERNAL SOURCES:
+  Spring:
+    :branch: swift3
+    :git: https://github.com/MengTo/Spring.git
   SwiftValidator:
     :branch: master
     :git: https://github.com/jpotts18/SwiftValidator.git
 
 CHECKOUT OPTIONS:
+  Spring:
+    :commit: 8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64
+    :git: https://github.com/MengTo/Spring.git
   SwiftValidator:
     :commit: 2a6c23ad9efd76127f6109445515cb9780e5ad92
     :git: https://github.com/jpotts18/SwiftValidator.git
@@ -54,10 +62,11 @@ SPEC CHECKSUMS:
   PKHUD: 9a3599e04d57676ec14746c40e423a52fb6588c0
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SkyFloatingLabelTextField: 26a92ad407044dd5a7c3e4e348738ff0991514fe
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
-PODFILE CHECKSUM: 8d14803abb04953a549a44535c552f3825ff2153
+PODFILE CHECKSUM: e21dcb2c132c443a6613a95c96737c8d273945b7
 
 COCOAPODS: 1.2.0

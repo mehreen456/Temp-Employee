@@ -1,4 +1,4 @@
-//
+ //
 //  ShiftsCell.swift
 //  TempEmployee
 //
@@ -30,16 +30,21 @@ class ShiftsCell: UITableViewCell {
     @IBOutlet weak var shiftJobAddress: UILabel!
     @IBOutlet weak var shiftJobTitle: UILabel!
     @IBOutlet weak var shiftDate: UILabel!
-    
-     var progressTimer = Timer()
-    
+    @IBOutlet weak var repostButton: UIButton!
+   
+    var progressTimer : Timer?
     var shiftPostedDate = 0.0
     
+    var countDown = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.progressTimer = nil
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -116,35 +121,60 @@ class ShiftsCell: UITableViewCell {
         })
     }
     
-    func isShiftCoveringTimeExpired(date:Date)  {
+    func attachTimerIfNeed(shift:Shift)  {
         
-        var nDate = date
-        nDate.addTimeInterval(60*60)
+        guard  let component =  shift.isPostedWithinAnHour() else{
+            
+            return
+        }
         
         
-//        if nDate.compare(Date.init(timeIntervalSinceNow: 0)) {
-//            <#code#>
-//        }
+        if (component.hour)! <= 1 {
+            
+            let minStr = "MINS"
+            let str = NSMutableAttributedString(string: "\(minStr) UNTILL COVERED")
+            
+            str.addAttributes([NSFontAttributeName:UIFont(name:"Lato-Light", size: 10)!], range: NSMakeRange(0, minStr.characters.count))
+            str.addAttributes([NSFontAttributeName:UIFont(name:"Lato-Bold", size: 10)!], range: NSMakeRange(minStr.characters.count, str.length - minStr.characters.count))
+            
+            self.shiftStatus.attributedText = str
+            self.progressBar.isHidden = false
+            self.countDown = 60 - component.minute! // difference in minutes
+            self.updateTimer() // call once before timer starts updating value
+            self.attachTimer() // also set shiftPostedDate
+        }else{
+            
+            self.progressBar.isHidden = true
+            self.progressTimer = nil
+            self.shiftStatus.isHidden = true
+            self.repostButton.isHidden = false
+        }
+
     }
     
     func attachTimer()  {
         
-        
+        self.progressTimer = Timer()
         self.progressTimer  = Timer.scheduledTimer(timeInterval: 60, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         
     }
     func updateTimer()   {
         // check if value is 60 mins
         // if tru invalidate timer and hide progres bar
-        if self.shiftPostedDate == 60{
-            self.progressTimer .invalidate()
+        if self.countDown == 0{
+            self.progressTimer?.invalidate()
             self.progressBar.isHidden = true
             
             return
         }
-        self.shiftPostedDate += 1
+        self.countDown -= 1
+        let  progressInDecimal = fabs(0.6 - (CGFloat(self.countDown)/100))
+        self.progressBar.setProgress(progressInDecimal, animated: true)
         
-        self.progressBar.setProgress(CGFloat((self.shiftPostedDate/100) / 0.6), animated: true)
+        self.progressBar.setHintTextGenerationBlock { (progress) -> String? in
+
+            return "\(self.countDown)"
+        }
     }
     
 }

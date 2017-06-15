@@ -69,8 +69,8 @@ class ViewShiftInfoController: UIViewController {
             
             if let rating = self.shift.jobSeeker?.average_rating{
                 
-               var r =  Int(rating)!
-                r   -= 1
+               var r =  rating
+                
                 for (index,button) in starButtons.enumerated()
                 {
                     if index == r{
@@ -83,7 +83,7 @@ class ViewShiftInfoController: UIViewController {
             
         }
     }
-    @IBAction func ratingButtonPressed(_ sender: Any) {
+    @IBAction func ratingButtonPressed(_ sender: UIButton) {
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let rateVC : RateViewController = storyboard.instantiateViewController()

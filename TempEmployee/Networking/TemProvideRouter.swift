@@ -23,6 +23,7 @@ enum TemProvideRouter: URLRequestConvertible {
         case update(Shift)
         case postSlotId(Int,Int)
         case deleteShift(Int)
+        case repostShift(Int)
         case postRating(Int,Int,Int,String) // jobseeker ID, shift ID, Rating Int, Review text
     
   func asURLRequest() throws -> URLRequest {
@@ -37,7 +38,7 @@ enum TemProvideRouter: URLRequestConvertible {
         return .post
       case .deleteShift:
         return .delete
-      case .update:
+      case .update,.repostShift:
         return .put
       }
     }
@@ -46,7 +47,7 @@ enum TemProvideRouter: URLRequestConvertible {
     // In case of GET and DELETE call return nil
     let params: ([String: Any]?) = {
       switch self {
-      case .get ,.deleteShift:
+      case .get ,.deleteShift,.repostShift:
         return nil
       case .getSIALicence:
         return nil
@@ -82,6 +83,8 @@ enum TemProvideRouter: URLRequestConvertible {
         relativePath = "\(Constants.EndPoints.Get.shifts)/\(id)"
       case .update(let shift):
         relativePath = "\(Constants.EndPoints.Get.shifts)/\(shift.id!)"
+      case .repostShift(let id):
+        relativePath = "\(Constants.EndPoints.Get.repostShift)/\(id)" 
       }
         
         var url = URL(string: TemProvideRouter.baseURLString)!

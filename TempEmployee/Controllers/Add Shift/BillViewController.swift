@@ -42,8 +42,55 @@ class BillViewController: UIViewController {
          let sTotal = self.removeCurrencySignAndConvertToDouble(str: sT)
         self.totalCharges.text =  "\(self.shift.getTotalIncludig(vat:vCharges , subTotal: sTotal))"
         }
+        
+        
     }
 
+   
+    override func viewWillAppear(_ animated: Bool){
+    
+    
+        super.viewWillAppear(animated)
+        
+        self.firstView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+        self.secondView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+        self.thirdView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateKeyframes(withDuration: 0.9, delay: 0.0, options: .calculationModeLinear, animations: {
+            // each keyframe needs to be added here
+            // within each keyframe the relativeStartTime and relativeDuration need to be values between 0.0 and 1.0
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3, animations: {
+                
+                self.firstView.alpha = 1
+                self.firstView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.3, animations: {
+                
+                self.secondView.alpha = 1
+                self.secondView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.3, animations: {
+                
+                self.thirdView.alpha = 1
+                self.thirdView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
+            })
+            
+            
+        }, completion: {finished in
+            // any code entered here will be applied
+            // once the animation has completed
+            
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,6 +131,7 @@ extension BillViewController{
             case .Success(let response):
                     if response.success{
                         HUD.flash(.success, delay: 0.0)
+                        NotificationCenter.default.post(name:NSNotification.Name(rawValue: Constants.Notifications.shiftPosted) , object: nil)
                         self.popToRoot()
                     }else{
                         HUD.flash(.error, delay: 0.0)

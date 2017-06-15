@@ -12,8 +12,8 @@ import SwiftyUserDefaults
 import DropDown
 import Intercom
 
-let INTERCOM_APP_ID = "swxpcq0d"
-let INTERCOM_API_KEY = "ios_sdk-7f8f6a7a251f2557b34c28ae278f9bcb0b4e0991"
+let INTERCOM_APP_ID = "u2oc79rp"
+let INTERCOM_API_KEY = "ios_sdk-28fca06bd4b1824de40d5558d1f571b7b7303004"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,6 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        if Defaults[.hasUserRegistered] {
+            
+            LoginService().loginEmployerWith(email: Defaults[.email]!, password: Defaults[.password]!, completionHandler: {result in
+                
+                switch result {
+                case .Success(let user):
+                    
+                    print("User access token = \(user.access_token?.characters.count)")
+                    if (user.access_token?.characters.count)! > 0{
+                        Defaults[.accessToken] = user.access_token
+                        Defaults[.accessTokenExpiresIn] = user.expires_in!
+                    }
+                    
+                case .Failure(let error):
+                    print(error)
+                }
+                
+            })
+        }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -91,6 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // instantiate your desired ViewController
             let rootController : UITabBarController  = storyboard.instantiateViewController(withIdentifier: "TabViewController") as! UITabBarController
+            
+            /*let rootController : ThankViewController  = storyboard.instantiateViewController(withIdentifier: "ThankViewController") as! ThankViewController*/
+            
             self.window?.rootViewController = rootController
             DropDown.startListeningToKeyboard()
         }

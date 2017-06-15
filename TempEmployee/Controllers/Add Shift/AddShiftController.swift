@@ -45,7 +45,7 @@ class AddShiftController: UIViewController {
     var coordinate : CLLocationCoordinate2D?
     var isEditingShift:  Bool! = false
     
-    let dropDown = DropDown()
+    var dropDown : DropDown!
     let validator = Validator()
     let timeArray = Constants.Shift.time
     // set initial location in London
@@ -62,6 +62,8 @@ class AddShiftController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dropDown = DropDown()
         
         self.navigationController?.navigationBar.isHidden = true
         self.tableView.dataSource   = self
@@ -90,7 +92,23 @@ class AddShiftController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
-    
+    func clearPrefilledData() {
+        
+        self.cell?.licenceRequiredField.text = ""
+        self.cell?.dateField.text = ""
+        self.cell?.jobRollField.text = ""
+        self.cell?.startTimeField.text = ""
+        self.cell?.pricePerHourField.text = ""
+        
+        self.cell?.addressErrorLabel.text = ""
+        self.cell?.rollErrorLabel.text = ""
+        self.cell?.requiredLicenceErrorLabel.text = ""
+        self.cell?.priceErrorLabel.text = ""
+        
+        self.cell?.licenceView.subviews.forEach({ $0.removeFromSuperview() })
+        self.coordinate = nil
+        self.centerMapOnLocation(location: self.initialLocation)
+    }
 }
 extension AddShiftController: UITableViewDataSource, UITableViewDelegate ,ValidationDelegate , UITextFieldDelegate,UIGestureRecognizerDelegate,MKMapViewDelegate{
     
