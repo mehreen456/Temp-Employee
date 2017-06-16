@@ -12,15 +12,24 @@ import Spring
 class RateViewController: UIViewController {
     
     @IBOutlet weak var reviewTextView: UITextView!
+    @IBOutlet weak var star2: SpringButton!
+    @IBOutlet weak var star4: SpringButton!
+    @IBOutlet weak var star3: SpringButton!
+    @IBOutlet weak var star5: SpringButton!
     @IBOutlet weak var jobseekerNameLabel: UILabel!
     
     var shift :Shift!
     var rating :Int = 0
+    var StarsArray:[SpringButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+         StarsArray.insert(starPressed, at:0)
+         StarsArray.insert(star2, at:1)
+         StarsArray.insert(star3, at:2)
+         StarsArray.insert(star4, at:3)
+         StarsArray.insert(star5, at:4)
         
     }
     
@@ -40,16 +49,22 @@ class RateViewController: UIViewController {
     @IBAction func starPressed(_ sender: SpringButton) {
         
         if sender.isSelected{
-            sender.isSelected = false
-            rating -= 1
+            for i in sender.tag..<5 {
+                StarsArray[i].isSelected = false
+                rating -= 1
+            }
+            
         }else{
-            sender.isSelected = true
-            sender.animation = "pop"
-            sender.animate()
+            for i in 0..<sender.tag + 1 {
+                
+            StarsArray[i].isSelected = true
+            StarsArray[i].animation = "pop"
+            StarsArray[i].animate()
             rating += 1
+            }
         }
     }
-    
+   
 }
 
 extension RateViewController{

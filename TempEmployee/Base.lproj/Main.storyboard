@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e3g-iM-q3J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e3g-iM-q3J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -134,13 +134,13 @@
                                 <state key="normal" image="Finger Print Icon"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW SHIFT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyj-cb-R0q">
-                                <rect key="frame" x="155" y="504" width="65" height="15"/>
+                                <rect key="frame" x="155" y="505" width="65" height="14"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.50980392159999999" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xK3-DT-P6x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -228,7 +228,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0a-LS-cWa">
-                                        <rect key="frame" x="40" y="160" width="72.5" height="22"/>
+                                        <rect key="frame" x="40" y="160" width="76.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -531,7 +531,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="7v5-hD-qMa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-Mi-qoF" customClass="SpringButton" customModule="Spring">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-Mi-qoF" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="57" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -539,7 +539,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="9RI-or-CuT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-0G-KKf" customClass="SpringButton" customModule="Spring">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-0G-KKf" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="114" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -547,7 +547,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="OMY-GC-q8i"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-nB-8w6" customClass="SpringButton" customModule="Spring">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-nB-8w6" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="171" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -555,7 +555,7 @@
                                             <action selector="starPressed:" destination="iQT-rK-KNX" eventType="touchUpInside" id="vhF-0U-nQX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7q6-tX-l4v" customClass="SpringButton" customModule="Spring">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7q6-tX-l4v" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="228" y="0.0" width="42" height="40"/>
                                         <state key="normal" image="Unselected Big Star"/>
                                         <state key="selected" image="Selected Big Star"/>
@@ -658,6 +658,10 @@
                     <connections>
                         <outlet property="jobseekerNameLabel" destination="1ZR-dT-Nie" id="HAp-XR-Z7n"/>
                         <outlet property="reviewTextView" destination="Reb-Ii-7iV" id="UIT-gT-wLw"/>
+                        <outlet property="star2" destination="Xyn-Mi-qoF" id="gSj-Ev-Ra7"/>
+                        <outlet property="star3" destination="NU8-0G-KKf" id="tPY-2E-Wkl"/>
+                        <outlet property="star4" destination="xTp-nB-8w6" id="JlI-6l-sn4"/>
+                        <outlet property="star5" destination="7q6-tX-l4v" id="Qsb-0l-moh"/>
                         <outlet property="starPressed" destination="MyS-Of-KNf" id="CvH-ck-LnD"/>
                         <outlet property="submitRattingPressed" destination="I08-WE-aWt" id="Fx7-We-rDK"/>
                     </connections>
